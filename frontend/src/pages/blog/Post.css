@@ -1,0 +1,6 @@
+.post-page h1{margin-top:0}
+.post-cover{width:100%;max-height:360px;object-fit:cover;border-radius:8px;margin:1rem 0}
+.post-meta{margin-bottom:0.75rem}
+.post-body{line-height:1.6;color:#333}
+
+/* Teacher note: add social share and related posts later */

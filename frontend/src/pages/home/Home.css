@@ -1,0 +1,61 @@
+.home .container{padding-top:1rem}
+.home h2{font-size:1.5rem;margin-bottom:0.5rem}
+.home p{color:var(--muted)}
+
+/* Teacher note: extend with cards for features/testimonials */
+
+.intro { padding-top: 1.25rem; }
+.intro-grid{display:grid;grid-template-columns:2fr 1fr;gap:1rem;align-items:start}
+.intro-text{padding:0}
+.blog-promo img{width:100%;height:auto;border-radius:8px;margin-bottom:0.5rem}
+
+.blog-promo__image{width:100%;height:auto;border-radius:8px;margin-bottom:0.5rem;object-fit:cover}
+
+.blog-promo h4{margin:0.4rem 0 0.25rem}
+.blog-promo .small{color:var(--muted)}
+.blog-promo .featured-post img{border-radius:8px;height:auto;max-height:140px;object-fit:cover}
+.blog-promo .featured-post h4{font-size:1rem;color:var(--heading)}
+.blog-promo .featured-post p{margin:0}
+.blog-promo .btn{margin-top:0.6rem}
+
+.welcome-card{padding:1rem}
+
+.welcome-card.blog-feature{padding:1rem}
+.welcome-card .featured-post{display:flex;flex-direction:column;gap:0.5rem}
+.welcome-card .featured-post img{border-radius:8px;height:auto;max-height:140px;object-fit:cover}
+.welcome-card h3{margin:0 0 0.4rem}
+.welcome-card h4{font-size:1rem;color:var(--heading);margin:0}
+.welcome-card .btn{margin-top:0.6rem}
+
+/* Promotional icon and highlight styles */
+.blog-promo__icon,
+.blog-feature__icon{width:84px;height:84px;border-radius:999px;display:grid;place-items:center;color:white;font-size:28px;background: var(--heading);box-shadow:0 8px 20px rgba(0,0,0,0.12);margin-bottom:0.6rem;animation:promo-pulse 1400ms ease-in-out infinite}
+
+@keyframes promo-pulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+
+.highlight{display:inline-block;padding:0.1rem 0.45rem;border-radius:8px;background: var(--color-sky);color:white;animation:highlight-glow 2400ms ease-in-out infinite}
+
+@keyframes highlight-glow{0%{filter:brightness(1)}50%{filter:brightness(1.12)}100%{filter:brightness(1)}}
+
+.stats-section{margin-top:1.25rem}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
+.stat{display:flex;gap:1rem;align-items:center;padding:1rem;border-radius:12px}
+.stat-icon{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background: var(--heading);color:white;font-size:1.25rem}
+.stat-number{font-size:1.75rem;font-weight:800;color:var(--heading)}
+.stat-label{color:var(--muted);font-weight:600;font-size:0.95rem}
+
+/* Entrance helper to draw attention */
+.card-entrance{transform-origin:center;}
+.featured-post{display:flex;flex-direction:column;gap:0.5rem}
+
+@media (max-width:880px){
+	.intro-grid{grid-template-columns:1fr;}
+.classes-preview h2{margin-top:0}
+.classes-preview .grid{margin-top:1rem}
+.classes-preview .text-muted{margin-bottom:0.5rem}
+}
+
+.classes-preview .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+
+.blog-promo .featured-post img{width:100%}
+/* Teacher note: preview uses sample data. Replace with API-driven content later. */

@@ -1,0 +1,23 @@
+.blog-card{display:flex;gap:1rem;border:1px solid rgba(0,0,0,0.04);padding:1rem;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fffefb);position:relative}
+.blog-card.card-accent-top{overflow:hidden}
+.blog-card__image{width:140px;height:96px;object-fit:cover;border-radius:10px}
+.blog-card__body{flex:1}
+.blog-card__title{margin:0;font-size:1.125rem;color:var(--heading)}
+.blog-card__meta{color:var(--muted);font-size:0.875rem;margin-top:0.25rem}
+.blog-card__excerpt{margin:0.5rem 0;color:#333}
+.blog-card__readmore{display:inline-block;margin-top:0.5rem;color:var(--accent);font-weight:600}
+
+/* add entrance animation and subtle hover for playful feel */
+.blog-card{animation:cardIn .66s cubic-bezier(.2,.9,.3,1) both}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,0.06);}
+
+/* Teacher note: this is intentionally simple — replace with richer layout as you progress */
+.blog-card{display:flex;gap:1rem;border:1px solid #eaeaea;padding:1rem;border-radius:8px;background:#fff}
+.blog-card__image{width:140px;height:96px;object-fit:cover;border-radius:6px}
+.blog-card__body{flex:1}
+.blog-card__title{margin:0;font-size:1.125rem}
+.blog-card__meta{color:#6c757d;font-size:0.875rem;margin-top:0.25rem}
+.blog-card__excerpt{margin:0.5rem 0;color:#444}
+.blog-card__readmore{display:inline-block;margin-top:0.5rem;color:var(--primary)}
+
+/* Teacher note: this is intentionally simple — replace with richer layout as you progress */

@@ -1,0 +1,81 @@
+:root{
+  /* Preschool palette variables (semantic, friendly, and balanced) */
+  --color-yellow: #FFC857;
+  --color-orange: #FFB347;
+  --color-sky: #62C3F0;
+  --color-teal: #00A9A5;
+  --color-coral: #FF6B6B;
+  --color-purple: #7A2E8E;
+  --color-pink: #FFD1E6;
+  --color-mint: #66D6A3;
+
+  --primary: var(--color-orange); /* subtle warm primary */
+  --secondary: var(--color-sky);
+  --accent: var(--color-coral);
+  --heading: var(--color-purple);
+  --muted: #4B5563;
+  --container-width:1100px;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+body{font-family:'Baloo 2', 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;margin:0;color:#222;background:linear-gradient(180deg,var(--bg,#fffaf0),#fff)}
+.container{width:min(var(--container-width),94%);margin:0 auto;padding:2rem 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.stack{display:flex;flex-direction:column;gap:1rem}
+.btn{cursor:pointer;border-radius:var(--radius);padding:0.5rem 0.9rem}
+
+/* Buttons */
+.btn-primary{background:var(--primary);border:none;color:white;box-shadow:0 10px 24px rgba(0,169,165,0.12)}
+.btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+
+/* Playful card base */
+.card{background:linear-gradient(180deg,#ffffff,#fffefb);border-radius:var(--radius);box-shadow:0 8px 22px rgba(0,0,0,0.06);padding:1rem;border:1px solid rgba(0,0,0,0.03)}
+
+/* Page-level spacing utilities: use `.page-section` on top-level sections for consistent vertical rhythm */
+.page-section{padding:3rem 0}
+.page-section .card{padding:1.25rem}
+.segment{padding:1rem;border-radius:10px;background:linear-gradient(180deg,#fff,#fffefb);margin-bottom:1.25rem}
+.section-inner{padding:1.25rem 0}
+
+/* Ensure headings inside sections have comfortable spacing */
+.page-section .section-heading{margin-top:0;margin-bottom:0.75rem}
+
+/* ----------------------------- */
+/* Playful utility shapes & dividers */
+/* - Use `.shape-circle` and `.shape-blob` inside sections for decorative elements. */
+.shape-circle{position:absolute;border-radius:50%;opacity:0.14;pointer-events:none}
+.shape-blob{position:absolute;border-radius:40% 60% 50% 60%;opacity:0.12;pointer-events:none}
+
+/* Wave divider using inline SVG for a light, performant divider */
+.divider-wave{position:relative}
+.divider-wave::after{content:"";display:block;width:100%;height:64px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FFE7B2' fill-opacity='0.6' d='M0,192L48,170.7C96,149,192,107,288,117.3C384,128,480,192,576,192C672,192,768,128,864,122.7C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-size:cover;position:absolute;left:0;bottom:0;transform:translateY(50%)}
+
+/* Dot pattern (subtle) */
+.bg-dots{background-image:radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);background-size:20px 20px}
+
+/* Accent utility */
+.accent-pill{display:inline-block;padding:0.2rem 0.6rem;border-radius:999px;background:linear-gradient(90deg,var(--secondary),var(--accent));color:white;font-weight:700;font-size:0.85rem}
+
+/* Card entrance animation: subtle scale/translate with fade and small stagger */
+@keyframes cardIn { from { opacity: 0; transform: translateY(12px) scale(0.995) } to { opacity: 1; transform: none } }
+.card-entrance{animation:cardIn .66s cubic-bezier(.2,.9,.3,1) both}
+.grid > * { opacity:0; transform:translateY(12px); animation:cardIn .66s cubic-bezier(.2,.9,.3,1) both; }
+.grid > *:nth-child(1){ animation-delay:0.04s }
+.grid > *:nth-child(2){ animation-delay:0.09s }
+.grid > *:nth-child(3){ animation-delay:0.14s }
+.grid > *:nth-child(4){ animation-delay:0.18s }
+.grid > *:nth-child(5){ animation-delay:0.22s }
+.grid > *:nth-child(6){ animation-delay:0.26s }
+
+/* small helper for rounded top accent bar on cards */
+.card-accent-top::before{content:"";display:block;height:8px;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);background:linear-gradient(90deg,var(--secondary),var(--accent));margin:-1rem -1rem 1rem -1rem}
+
+
+/* Small utilities */
+.text-muted{color:var(--muted)}
+
+/* subtle motion helpers */
+.animate-fade-up{transform:translateY(8px);opacity:0;transition:transform .45s ease,opacity .45s ease}
+.animate-fade-up.in-view{transform:none;opacity:1}
+
+/* Teacher note: add more variables and responsive utilities as you progress. */

@@ -1,0 +1,104 @@
+.about-page h2 { margin-top: 0; }
+.about-page p { color: var(--muted); }
+
+.section-heading{margin-top:0.4rem;margin-bottom:0.6rem;font-size:1.25rem;color:var(--heading);font-weight:700}
+
+
+/* Flexbox for about intro: founder image floats right, bottom-aligned */
+.about-intro {
+	padding: 0.9rem;
+	border-radius: 10px;
+}
+.about-intro-flex {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end; /* bottom align image with text */
+	gap: 2.2rem;
+}
+.about-text {
+	flex: 1 1 0%;
+}
+.about-text p {
+	margin: 0 0 0.6rem;
+	color: var(--muted);
+	font-size: 1.05rem;
+	line-height: 1.65;
+}
+.founder-figure {
+	margin-bottom: 0.6rem;
+	text-align: center;
+	min-width: 220px;
+}
+.founder-photo {
+	width: 220px;
+	height: auto;
+	border-radius: 12px;
+	box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+	display: block;
+	margin: 0 auto;
+}
+.founder-caption {
+	font-size: 0.9rem;
+	color: var(--muted);
+	margin-top: 0.5rem;
+}
+.founder-figure-bottom {
+	align-self: flex-end;
+}
+
+@media (max-width: 900px) {
+	.about-intro-flex {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1.2rem;
+	}
+	.founder-figure {
+		min-width: 0;
+		width: 100%;
+	}
+	.founder-photo {
+		width: 180px;
+	}
+}
+
+@media (min-width:900px){
+	.founder-figure{float:right;margin-left:1rem;margin-top:0;width:240px;text-align:center}
+	.founder-photo{width:220px;border-radius:12px}
+	.founder-caption{font-size:0.9rem;color:var(--muted);margin-top:0.5rem}
+	.about-text{max-width:640px;margin-right:280px}
+}
+
+@media (min-width:720px) and (max-width:899px){
+	.founder-figure{float:right;margin-left:0.9rem;width:200px}
+	.founder-photo{width:180px}
+	.about-text{max-width:720px}
+}
+.about-more__content{max-height:0;overflow:hidden;transition:max-height .36s ease;padding-top:0}
+.about-more__content.open{max-height:1200px;padding-top:0.6rem}
+.about-subheading{margin-top:0.75rem;font-size:1.05rem;color:var(--heading);font-weight:700}
+.read-more-btn{padding:0.45rem 0.8rem;border-radius:8px}
+
+/* Teacher note: add team grid and certifications section here */
+.values { list-style: none; padding: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.5rem; }
+.values li { background: #fff; padding: 0.6rem; border-radius: 8px; box-shadow: 0 6px 14px rgba(0,0,0,0.04); }
+
+/* Values with icons */
+.values li{display:flex;align-items:center;gap:0.75rem}
+.val-icon{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;color:white;font-size:1.15rem;flex-shrink:0}
+
+.staff-section { 
+	margin-top: 1.25rem; 
+	padding: 1.25rem; 
+	border-radius: 12px; 
+	/* slightly darker, soft warm tint to indicate section transition */
+	background: linear-gradient(180deg, rgba(255,238,220,0.6), rgba(255,245,236,0.6));
+	border: 1px solid rgba(0,0,0,0.03);
+}
+.staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1rem; }
+
+.staff-section h3{margin-top:0}
+
+.staff-section{padding-top:0.6rem}
+.about-intro{margin-bottom:1.25rem}
+
+/* Teacher note: change staff cards to show bios and a favorite time */

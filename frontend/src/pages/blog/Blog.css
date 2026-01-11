@@ -1,0 +1,9 @@
+.blog-page .stack{margin-top:1rem}
+.blog-page .blog-list{margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
+.blog-card{transition:transform .2s ease,box-shadow .2s ease}
+.blog-card:focus-within,.blog-card:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(0,0,0,0.06)}
+.blog-list p{grid-column:1/-1}
+
+.section-heading{margin-top:0.4rem;margin-bottom:0.6rem;font-size:1.25rem;color:var(--heading);font-weight:700}
+
+/* Teacher note: consider adding pagination, categories or search */

@@ -1,0 +1,10 @@
+.staff-card{display:flex;gap:1rem;align-items:flex-start;background:linear-gradient(180deg,#ffffff,#fffefb);border-radius:var(--radius);padding:1rem;border:1px solid rgba(0,0,0,0.04)}
+.staff-card__avatar{width:88px;height:88px;border-radius:8px;object-fit:cover}
+.staff-card__avatar--fallback{width:88px;height:88px;border-radius:8px;background:var(--mint);display:flex;align-items:center;justify-content:center;font-weight:700;color:#2a2a2a}
+.staff-card__media{width:88px;flex-shrink:0}
+.staff-card__name{margin:0;font-size:1.05rem;color:var(--berry);margin-bottom:0.15rem}
+.staff-card__role{margin:0;color:var(--muted);font-size:0.875rem}
+.staff-card__fav{margin:0.5rem 0 0;color:var(--coral);font-size:0.875rem}
+.staff-card__bio{margin-top:0.5rem;color:#444;font-size:0.95rem}
+
+/* Teacher note: this is intentionally minimal — add social links or qualifications as needed */

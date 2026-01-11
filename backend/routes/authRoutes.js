@@ -1,0 +1,12 @@
+import express from "express";
+import { register, login } from "../controllers/authController.js";
+import { validate } from "../middleware/validate.js";
+import { registerSchema, loginSchema } from "../validations/authValidation.js";
+
+const router = express.Router();
+
+// Auth routes: validate input with Zod then delegate to controller
+router.post("/register", validate(registerSchema), register);
+router.post("/login", validate(loginSchema), login);
+
+export default router;

@@ -1,0 +1,59 @@
+:root {
+  /* Preschool palette - semantic and named variables */
+  --color-yellow: #FFC857; /* warm yellow (primary accent) */
+  --color-orange: #FFB347; /* soft orange */
+  --color-sky: #62C3F0;    /* sky blue (secondary) */
+  --color-teal: #00A9A5;   /* teal (secondary) */
+  --color-coral: #FF6B6B;  /* coral accent */
+  --color-purple: #7A2E8E; /* playful purple for headings */
+  --color-pink: #FFD1E6;   /* soft pink */
+  --color-mint: #66D6A3;   /* subtle green accent */
+
+  /* Semantic mappings for components */
+  --primary: var(--color-yellow);
+  --secondary: var(--color-sky);
+  --accent: var(--color-coral);
+  --heading: var(--color-purple);
+  --muted: #4B5563;
+  --bg: #FFF9F1;
+  --card: #FFFFFF;
+  --radius: 16px;
+}
+
+/* Base typography & layout */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, var(--bg), #ffffff);
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover, a:focus { text-decoration: underline; }
+
+h1, h2, h3, h4 { font-family: 'Baloo 2', cursive; color: var(--heading); margin-top: 0; }
+
+/* Buttons: gentle, rounded, consistent with brand */
+.btn-primary { background: var(--accent); border-color: var(--accent); color: white; box-shadow: 0 10px 24px rgba(255,107,107,0.12); }
+.btn-primary:focus, .btn-primary:hover { filter: saturate(1.05); transform: translateY(-1px); }
+.btn-outline { border: 1px solid rgba(0,0,0,0.06); background: transparent; color: #222; }
+
+/* Cards and surfaces */
+.card { background: var(--card); border-radius: var(--radius); box-shadow: 0 8px 20px rgba(15,15,15,0.04); }
+
+/* Accessibility focus */
+:focus { outline: 3px solid rgba(13,122,253,0.12); outline-offset: 2px; }
+
+/* Small utilities */
+.container { width: min(1100px, 94%); margin: 0 auto; padding: 2rem 0; }
+.text-muted { color: var(--muted); }
+
+/* Keep animations subtle and minimal */
+* { transition: color .15s ease, background-color .15s ease, transform .15s ease; }
+
+/* Teacher note: main.css contains brand defaults; add more custom rules in styles/global.css */

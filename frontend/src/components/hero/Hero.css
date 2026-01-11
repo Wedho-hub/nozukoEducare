@@ -1,0 +1,24 @@
+.hero{position:relative;overflow:hidden;padding:3.25rem 0;text-align:center;background:linear-gradient(180deg,var(--color-pink, #FFD1E6), rgba(255,255,255,0));}
+
+/* Decorative shapes using pseudo-elements for playful background */
+.hero::before{content:"";position:absolute;left:-6%;top:-10%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle at 30% 30%, var(--color-sky), var(--color-pink));opacity:0.18;transform:rotate(12deg);pointer-events:none}
+.hero::after{content:"";position:absolute;right:-8%;bottom:-8%;width:320px;height:240px;border-radius:50% 40% 60% 50%;background:linear-gradient(90deg,var(--color-yellow),var(--color-orange));opacity:0.12;pointer-events:none}
+
+.hero__title{font-size:2.5rem;margin:0 0 0.6rem;color:var(--heading);font-family:'Baloo 2',cursive;font-weight:700;line-height:1.05}
+.hero__subtitle{margin:0;color:var(--muted);max-width:780px;margin-left:auto;margin-right:auto;font-size:1.3rem;font-weight:500}
+
+.hero__ctas{margin-top:1.25rem;display:flex;gap:0.75rem;justify-content:center}
+.hero__cta{padding:0.6rem 1.1rem;border-radius:10px}
+.hero__cta.btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+
+@media (min-width:900px){
+	.hero__title{font-size:3.25rem}
+	.hero__subtitle{font-size:1.125rem}
+}
+
+@media (max-width:520px){
+	.hero__title{font-size:1.9rem}
+	.hero__subtitle{font-size:0.98rem}
+}
+
+/* Teacher note: CTAs live here — swap to a form or modal signup when needed */
