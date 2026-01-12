@@ -12,11 +12,24 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 const app = express();
 
-// CORS: restrict to FRONTEND_URL if provided, otherwise allow all for development
-const corsOptions = {
-	origin: process.env.FRONTEND_URL || true,
-};
-app.use(cors(corsOptions));
+// CORS: allow Netlify frontend and localhost for dev
+const allowedOrigins = [
+	process.env.FRONTEND_URL,
+	'http://localhost:5173',
+	'http://localhost:3000',
+];
+app.use(cors({
+	origin: function (origin, callback) {
+		// allow requests with no origin (like mobile apps, curl, etc.)
+		if (!origin) return callback(null, true);
+		if (allowedOrigins.includes(origin)) {
+			return callback(null, true);
+		} else {
+			return callback(new Error('Not allowed by CORS'));
+		}
+	},
+	credentials: true
+}));
 app.use(express.json());
 
 // Serve uploaded files at /uploads
