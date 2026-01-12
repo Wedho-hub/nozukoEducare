@@ -54,7 +54,7 @@ if (process.env.NODE_ENV === "production") {
 	app.use(express.static(staticPath));
 
 	// For any unmatched route, send index.html for client-side routing
-	app.get("/*", (req, res) => {
+	app.get(/^\/((?!api|uploads).)*$/, (req, res) => {
 		res.sendFile(path.join(staticPath, "index.html"));
 	});
 }
