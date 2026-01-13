@@ -39,10 +39,13 @@ export default function Post() {
       <div className="post-meta text-muted">{post.author} — {new Date(post.publishedAt).toLocaleDateString()}</div>
 
       {/* Cover image if present */}
+
       {post.coverImage && (
         <img
           className="post-cover"
-          src={post.coverImage.startsWith('http') ? post.coverImage : `http://localhost:5000${post.coverImage}`}
+          src={post.coverImage.startsWith('http')
+            ? post.coverImage
+            : `${import.meta.env.VITE_API_URL || 'https://nozukoeducare.onrender.com'}${post.coverImage}`}
           alt={post.title}
         />
       )}

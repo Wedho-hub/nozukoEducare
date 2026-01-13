@@ -51,10 +51,12 @@ app.get('/api/health', (req, res) => {
 // In production, serve the frontend static build (assumes `frontend/dist` exists)
 if (process.env.NODE_ENV === "production") {
 	const staticPath = path.join(__dirname, "..", "frontend", "dist");
+	console.log("[PRODUCTION] Serving static frontend from:", staticPath);
 	app.use(express.static(staticPath));
 
 	// For any unmatched route, send index.html for client-side routing
 	app.get(/^\/((?!api|uploads).)*$/, (req, res) => {
+		console.log("[PRODUCTION] Fallback to index.html for:", req.url);
 		res.sendFile(path.join(staticPath, "index.html"));
 	});
 }
