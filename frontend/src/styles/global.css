@@ -15,27 +15,28 @@
   --heading: var(--color-purple);
   --muted: #4B5563;
   --container-width:1100px;
+  --base-font-size: 19px;
   --radius:16px;
 }
 *{box-sizing:border-box}
-body{font-family:'Baloo 2', 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;margin:0;color:#222;background:linear-gradient(180deg,var(--bg,#fffaf0),#fff)}
-.container{width:min(var(--container-width),94%);margin:0 auto;padding:2rem 0}
+body{font-family:'Baloo 2', 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;margin:0;color:#222;background:linear-gradient(180deg,var(--bg,#fffaf0),#fff);font-size:var(--base-font-size, 19px)}
+.container{width:min(var(--container-width),94%);margin:0 auto;padding:2.5rem 0;font-size:1.08em;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 .stack{display:flex;flex-direction:column;gap:1rem}
-.btn{cursor:pointer;border-radius:var(--radius);padding:0.5rem 0.9rem}
+.btn{cursor:pointer;border-radius:var(--radius);padding:0.6rem 1.1rem;font-size:1.08em;}
 
 /* Buttons */
 .btn-primary{background:var(--primary);border:none;color:white;box-shadow:0 10px 24px rgba(0,169,165,0.12)}
 .btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.06)}
 
 /* Playful card base */
-.card{background:linear-gradient(180deg,#ffffff,#fffefb);border-radius:var(--radius);box-shadow:0 8px 22px rgba(0,0,0,0.06);padding:1rem;border:1px solid rgba(0,0,0,0.03)}
+.card{background:linear-gradient(180deg,#ffffff,#fffefb);border-radius:var(--radius);box-shadow:0 8px 22px rgba(0,0,0,0.06);padding:1.25rem;border:1px solid rgba(0,0,0,0.03);font-size:1.08em;}
 
 /* Page-level spacing utilities: use `.page-section` on top-level sections for consistent vertical rhythm */
-.page-section{padding:3rem 0}
-.page-section .card{padding:1.25rem}
-.segment{padding:1rem;border-radius:10px;background:linear-gradient(180deg,#fff,#fffefb);margin-bottom:1.25rem}
-.section-inner{padding:1.25rem 0}
+.page-section{padding:3.5rem 0}
+.page-section .card{padding:1.5rem}
+.segment{padding:1.2rem;border-radius:10px;background:linear-gradient(180deg,#fff,#fffefb);margin-bottom:1.5rem;font-size:1.08em;}
+.section-inner{padding:1.5rem 0}
 
 /* Ensure headings inside sections have comfortable spacing */
 .page-section .section-heading{margin-top:0;margin-bottom:0.75rem}

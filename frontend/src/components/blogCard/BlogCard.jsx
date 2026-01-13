@@ -20,12 +20,20 @@ export default function BlogCard({ post }) {
 	// Prefer a URL-safe slug, fall back to id
 	const postPath = `/blog/${slug || _id || id}`
 
+	// Use correct backend URL for images in production
+	const backendBase = import.meta.env.VITE_API_URL || 'https://nozukoeducare.onrender.com';
+	const getImageUrl = (img) => {
+		if (!img) return defaultPostImg;
+		if (img.startsWith('http')) return img;
+		return `${backendBase}${img}`;
+	};
+
 	return (
 		<article className="blog-card card-accent-top" tabIndex={0} role="article" aria-labelledby={`post-${_id || id || slug}`} data-aos="fade-up">
 			{coverImage ? (
 				<img
 					className="blog-card__image"
-					src={coverImage.startsWith('http') ? coverImage : `http://localhost:5000${coverImage}`}
+					src={getImageUrl(coverImage)}
 					alt={title}
 				/>
 			) : (

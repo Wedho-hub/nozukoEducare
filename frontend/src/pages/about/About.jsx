@@ -15,32 +15,34 @@ function ReadMore() {
 	return (
 		<div className="about-more">
 			<div id={id} className={`about-more__content ${open ? 'open' : ''}`} aria-hidden={!open}>
-				<p>
-					Nozuko Educare offers a nurturing, safe, and stimulating environment where children are encouraged to learn through play, exploration, and guided discovery. The centre is fully aligned with the South African National Early Learning Development Standards (NELDS) and CAPS-informed foundation phase principles, ensuring that children are well prepared for the transition into formal schooling.
-				</p>
 
-				<p>
-					In addition to national curriculum requirements, Nozuko Educare is inspired by Montessori educational principles, promoting independence, curiosity, creativity, and confidence. Each child is supported to grow at their own pace while developing essential cognitive, social, emotional, and physical skills.
-				</p>
+				   <p>
+					   <strong>Nozuko Educare Centre</strong> is a leading early childhood development centre in [Your City], South Africa, dedicated to providing high-quality preschool education, child care, and holistic learning experiences. Our nurturing, safe, and stimulating environment encourages children to learn through play, exploration, and guided discovery. We are fully aligned with the South African National Early Learning Development Standards (NELDS) and CAPS-informed foundation phase principles, ensuring every child is well prepared for the transition into formal schooling.
+				   </p>
 
-				<p>
-					At Nozuko Educare, we believe that early learning shapes lifelong success. Our commitment is to educate, nurture, and empower young minds — building confident learners who are ready to thrive both in school and in life.
-				</p>
+				   <p>
+					   In addition to meeting national curriculum requirements, Nozuko Educare is inspired by Montessori educational principles, promoting independence, curiosity, creativity, and confidence. Our experienced teachers support each child to grow at their own pace while developing essential cognitive, social, emotional, and physical skills. We focus on school readiness, language development, numeracy, and social skills, making us a top choice for parents seeking the best preschool in [Your City].
+				   </p>
 
-				<h3 className="about-subheading">Our Vision</h3>
-				<p>
-					To be a leading community-based early childhood development centre that provides accessible, high-quality foundation education and empowers children to reach their full potential, regardless of socio-economic background.
-				</p>
+				   <p>
+					   At Nozuko Educare, we believe that early learning shapes lifelong success. Our commitment is to educate, nurture, and empower young minds—building confident learners who are ready to thrive both in school and in life. Discover why families trust us for quality early childhood education, a safe environment, and a strong foundation for lifelong learning.
+				   </p>
 
-				<h3 className="about-subheading">Our Mission</h3>
-				<ul>
-					<li>To provide affordable, quality early childhood education to Kasi communities</li>
-					<li>To create a safe, caring, and stimulating learning environment</li>
-					<li>To deliver education aligned with NELDS and CAPS standards</li>
-					<li>To incorporate Montessori-inspired learning that encourages independence and curiosity</li>
-					<li>To nurture the whole child — intellectually, socially, emotionally, and physically</li>
-					<li>To partner with parents and the community in shaping confident, lifelong learners</li>
-				</ul>
+
+				   <h3 className="about-subheading">Our Vision</h3>
+				   <p>
+					   To be the most trusted and accessible community-based early childhood development centre in [Your City], providing high-quality foundation education and empowering children to reach their full potential, regardless of socio-economic background. We aim to be recognized for our excellence in preschool education, child care, and school readiness.
+				   </p>
+
+				   <h3 className="about-subheading">Our Mission</h3>
+				   <ul>
+					   <li>To provide affordable, quality early childhood education and child care to Kasi communities and beyond</li>
+					   <li>To create a safe, caring, and stimulating learning environment for preschoolers</li>
+					   <li>To deliver education aligned with NELDS and CAPS standards, ensuring school readiness</li>
+					   <li>To incorporate Montessori-inspired learning that encourages independence, curiosity, and creativity</li>
+					   <li>To nurture the whole child—intellectually, socially, emotionally, and physically</li>
+					   <li>To partner with parents and the community in shaping confident, lifelong learners prepared for primary school and beyond</li>
+				   </ul>
 			</div>
 
 			<div style={{ marginTop: 12 }}>

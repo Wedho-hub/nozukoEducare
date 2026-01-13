@@ -40,6 +40,10 @@ export default function Footer() {
               Developed by <a href="https://tishbite.digital" target="_blank" rel="noopener noreferrer">Tishbite Digital</a>
             </small>
           </p>
+          <address style={{fontStyle:'normal', fontSize:'1.1em', marginTop:'0.5em'}}>
+            <strong>Address:</strong><br />
+            123 Main Road, Suburb, City, 0000, South Africa
+          </address>
         </div>
       </div>
 
@@ -47,7 +51,6 @@ export default function Footer() {
         <div className="copyright">
           <small>© {new Date().getFullYear()} Nozuko Educare Centre</small>
         </div>
-        
       </div>
     </footer>
   )
