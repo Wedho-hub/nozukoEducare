@@ -25,12 +25,6 @@ export default function Footer() {
             <a href="https://www.instagram.com/nozuko_educare/" target="_blank" rel="noopener noreferrer" className="social-link social-link--instagram" title="Instagram" aria-label="Instagram">
               <FaInstagram aria-hidden="true" />
             </a>
-            <a href="https://x.com/nozukoc7028" target="_blank" rel="noopener noreferrer" className="social-link social-link--x" title="X (formerly Twitter)" aria-label="X (formerly Twitter)">
-              <FaTwitter aria-hidden="true" />
-            </a>
-            <a href="https://pin.it/2LpeAEMkb" target="_blank" rel="noopener noreferrer" className="social-link social-link--pinterest" title="Pinterest" aria-label="Pinterest">
-              <FaPinterestP aria-hidden="true" />
-            </a>
           </div>
         </div>
 
@@ -42,7 +36,7 @@ export default function Footer() {
           </p>
           <address style={{fontStyle:'normal', fontSize:'1.1em', marginTop:'0.5em'}}>
             <strong>Address:</strong><br />
-            123 Main Road, Suburb, City, 0000, South Africa
+            148 Sanki Street, Victoria Mxenge, Philippi, Cape Town
           </address>
         </div>
       </div>

@@ -22,8 +22,6 @@
 /* Official/brand colors (kept calm and professional) */
 .social-link--facebook{background:#1877F2}
 .social-link--instagram{background:linear-gradient(45deg,#f58529 0%,#dd2a7b 50%,#515bd4 100%)}
-.social-link--x{background:#000000}
-.social-link--pinterest{background:#E60023}
 
 @media (max-width:720px){
   .footer-social{justify-content:center}
