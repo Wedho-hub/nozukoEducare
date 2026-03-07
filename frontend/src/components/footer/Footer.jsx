@@ -29,12 +29,20 @@ export default function Footer() {
         </div>
 
         <div className="footer-credit">
-          <p>
-            <small>
-              Developed by <a href="https://tishbite.digital" target="_blank" rel="noopener noreferrer">Tishbite Digital</a>
-            </small>
-          </p>
-          <address style={{fontStyle:'normal', fontSize:'1.1em', marginTop:'0.5em'}}>
+          <div className="developer-credit">
+            <span className="credit-label">Site developed by</span>
+            <a
+              href="https://tishbite.digital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="developer-link"
+              title="Visit Tishbite Digital - Professional Web Solutions"
+              aria-label="Tishbite Digital website"
+            >
+              <strong>Tishbite Digital</strong>
+            </a>
+          </div>
+          <address className="footer-address">
             <strong>Address:</strong><br />
             148 Sanki Street, Victoria Mxenge, Philippi, Cape Town
           </address>
