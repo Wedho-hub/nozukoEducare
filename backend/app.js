@@ -6,6 +6,7 @@ import url from "url";
 import authRoutes from "./routes/authRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import classRoutes from "./routes/classRoutes.js";
+import contactRoutes from "./routes/contactRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
@@ -42,6 +43,7 @@ app.use("/api/blogs", blogRoutes);
 import uploadRoutes from './routes/uploadRoutes.js'
 app.use('/api/uploads', uploadRoutes)
 app.use("/api/classes", classRoutes);
+app.use("/api/contact", contactRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
