@@ -1,72 +1,101 @@
 import React from 'react'
-/* eslint-disable-next-line no-unused-vars */
 import { motion } from 'framer-motion'
 import heroDefault from '../../assets/images/nozukohero.jpg'
+import MuralBackground from '../mural/MuralBackground'
 import './Hero.css'
 
 /**
- * Hero
- * Reusable hero section with optional CTAs. Keep copy concise and action-oriented.
- * Props:
- *  - title: string
- *  - subtitle: string
- *  - primaryCta: { text, href } (required)
- *  - secondaryCta: { text, href } (optional)
- *
- * Example:
- * <Hero title="Hello" subtitle="Welcome" primaryCta={{text:'Join',href:'#'}} />
+ * Hero — reusable page banner.
+ * Defaults are set for the homepage emotional hook.
  */
 export default function Hero({
-  title = 'Nozuko Educare',
-  subtitle = 'Nurturing young learners',
-  primaryCta = { text: 'Explore Classes', href: '#classes' },
-  secondaryCta = { text: 'Contact', href: '#contact' },
-  // We enforce using the site's primary hero image to keep a consistent brand background across pages
-  bgImage = heroDefault
+  title = 'Nurturing Every Child in Victoria Mxenge',
+  subtitle = 'Quality early childhood education in the heart of Philippi, Cape Town. CAPS-aligned, Montessori-inspired — because every child deserves a great start.',
+  badge = 'Ages 0 – 6 years',
+  primaryCta  = { text: 'Enrol Your Child', href: 'https://wa.me/27813872713' },
+  secondaryCta = { text: 'Book a Visit', href: '/contact' },
+  bgImage = heroDefault,
+  centered = true
 }) {
   return (
     <section
-      className="hero"
+      className={`hero ${centered ? 'hero--centered' : ''}`}
       role="region"
-      aria-label="Hero"
-      style={
-        bgImage
-          ? {
-              backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.5)), url(${bgImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }
-          : undefined
-      }
+      aria-label="Page banner"
+      style={bgImage ? {
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top'
+      } : undefined}
     >
-      <div className="container">
+      {/* Dark overlay for text legibility */}
+      <div className="hero__overlay" aria-hidden="true" />
+
+      {/* Abstract mural art — numbers, shapes, rings */}
+      <MuralBackground variant="hero" />
+
+      <div className="container hero__content">
+        {badge && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+          >
+            <span className="hero__badge">{badge}</span>
+          </motion.div>
+        )}
+
         <motion.h1
           className="hero__title"
-          initial={{ y: 16, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.05 }}
         >
           {title}
         </motion.h1>
 
-        <motion.p
-          className="hero__subtitle"
-          initial={{ y: 8, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.08 }}
-        >
-          {subtitle}
-        </motion.p>
+        {subtitle && (
+          <motion.p
+            className="hero__subtitle"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.12 }}
+          >
+            {subtitle}
+          </motion.p>
+        )}
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.18 }}>
-          <div className="hero__ctas">
-            {primaryCta && (
-              <a className="btn btn-primary hero__cta" href={primaryCta.href} aria-label={primaryCta.text}>{primaryCta.text}</a>
-            )}
-            {secondaryCta && (
-              <a className="btn btn-outline hero__cta" href={secondaryCta.href} aria-label={secondaryCta.text}>{secondaryCta.text}</a>
-            )}
-          </div>
+        <motion.div
+          className="hero__meta-row"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.18 }}
+        >
+          <span className="hero__meta-pill">📍 Victoria Mxenge, Philippi</span>
+          <span className="hero__meta-pill">⏰ Mon–Fri 07:00–17:00</span>
+        </motion.div>
+
+        <motion.div
+          className="hero__ctas"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.25 }}
+        >
+          {primaryCta && (
+            <a
+              className="hero__cta hero__cta--primary"
+              href={primaryCta.href}
+              target={primaryCta.href.startsWith('http') ? '_blank' : undefined}
+              rel={primaryCta.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              {primaryCta.text}
+            </a>
+          )}
+          {secondaryCta && (
+            <a className="hero__cta hero__cta--secondary" href={secondaryCta.href}>
+              {secondaryCta.text}
+            </a>
+          )}
         </motion.div>
       </div>
     </section>

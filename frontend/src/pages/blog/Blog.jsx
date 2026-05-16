@@ -1,82 +1,111 @@
 import React from 'react'
-import BlogCard from '../../components/blogCard/BlogCard' // Renders a summary card for each blog post
-import useFetch from '../../hooks/useFetch' // Custom hook for fetching data from API
-import useDocumentTitle from '../../hooks/useDocumentTitle' // Sets the document title for SEO/accessibility
-import Hero from '../../components/hero/Hero' // Top-of-page hero/banner section
-import heroImg from '../../assets/images/nozukohero.jpg' // Default hero image
-import './Blog.css' // Page-specific styles
+import BlogCard from '../../components/blogCard/BlogCard'
+import useFetch from '../../hooks/useFetch'
+import useDocumentTitle from '../../hooks/useDocumentTitle'
+import Hero from '../../components/hero/Hero'
+import heroImg from '../../assets/images/nozukohero.jpg'
+import './Blog.css'
+import { FaFeatherAlt, FaBookOpen, FaSmile } from 'react-icons/fa'
 
-// Fallback sample posts for when the API returns no data (for development/demo)
+const CATEGORIES = [
+  { icon: <FaFeatherAlt />, bg: '#EBF7F2', iconColor: '#1A5C45', title: 'Parent Tips', desc: 'Practical advice for raising curious, confident children.' },
+  { icon: <FaBookOpen />, bg: '#FEF3C7', iconColor: '#D97706', title: 'Learning Stories', desc: 'How our children are growing and discovering every day.' },
+  { icon: <FaSmile />, bg: '#EBF7F2', iconColor: '#1A5C45', title: 'Centre Updates', desc: 'Events, milestones and news from Nozuko Educare.' },
+]
+
 const SAMPLE_POSTS = [
   {
     _id: 'p1',
-    slug: 'introduction-to-play-based-learning',
-    title: 'Introduction to play-based learning',
-    excerpt: 'Play-based learning supports early development through guided discovery, social play and creative tasks.',
+    slug: 'why-montessori-works-in-south-africa',
+    title: 'Why Montessori Works in Our South African Context',
+    excerpt: 'The Montessori method is not just for wealthy private schools — it is a powerful framework for any child, anywhere. Here is how we apply it in Philippi.',
     publishedAt: new Date().toISOString(),
-    author: 'Nozuko Team',
-    coverImage: 'https://via.placeholder.com/480x300?text=Play+Learning'
+    author: 'Nozuko Mxenge',
+    coverImage: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80'
   },
   {
     _id: 'p2',
-    slug: 'why-routine-matters',
-    title: 'Why routine matters for young children',
-    excerpt: 'Consistent daily routines help children feel secure and build independence. Simple steps go a long way.',
+    slug: 'school-readiness-grade-1-checklist',
+    title: 'Is Your Child Ready for Grade 1? A Practical Checklist',
+    excerpt: 'School readiness is more than knowing the alphabet. Find out the 10 skills your child should have before starting Grade 1 — and how we build each one at Nozuko.',
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 7).toISOString(),
-    author: 'Mary Nkosi',
-    coverImage: 'https://via.placeholder.com/480x300?text=Routine'
-  }
+    author: 'Miranda',
+    coverImage: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=80'
+  },
+  {
+    _id: 'p3',
+    slug: 'routine-and-security-for-toddlers',
+    title: 'The Power of Routine: Why Predictability Feels Like Love to a Toddler',
+    excerpt: 'Consistent daily routines help young children feel safe and develop independence. Our approach to structured days at Nozuko Educare.',
+    publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 14).toISOString(),
+    author: 'Busisiwe',
+    coverImage: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&q=80'
+  },
 ]
 
-/**
- * Blog
- * Main blog listing page. Fetches blog posts from the backend API and displays them as cards.
- * If no posts are found, shows sample posts for a friendly empty state.
- */
 export default function Blog() {
-  // Set the page title in the browser tab
-  useDocumentTitle('Blog')
-
-  // Fetch blog posts from the API. Returns { data, loading, error }
+  useDocumentTitle('Blog — Nozuko Educare, Philippi')
   const { data: posts = [], loading, error } = useFetch('/api/blogs')
 
-  // Show loading spinner/message while fetching
-  if (loading) return <div className="container">Loading...</div>
-  // Show error message if fetch fails
-  if (error) return <div className="container">Error: {error.message}</div>
-
-  // Defensive: ensure posts is always an array
   const safePosts = Array.isArray(posts) ? posts : []
-
-  // Use API posts if available, otherwise show sample posts
   const displayed = safePosts.length ? safePosts : SAMPLE_POSTS
 
   return (
-    <>
-      {/* Hero/banner section at the top of the blog page */}
+    <div className="blog-page">
       <Hero
-        title="Blog"
-        subtitle="Insights & updates for parents"
-        primaryCta={{ text: 'Read latest', href: '#blog-list' }}
-        secondaryCta={{ text: 'Subscribe', href: '/contact' }}
+        title="Stories, Tips &amp; Updates"
+        subtitle="Parenting insights, learning stories, and news from our community in Victoria Mxenge, Philippi."
+        badge="Nozuko Educare Blog"
+        primaryCta={{ text: 'Read latest post', href: '#blog-list' }}
+        secondaryCta={{ text: 'Subscribe via WhatsApp', href: 'https://wa.me/27813872713' }}
         bgImage={heroImg}
       />
 
-      {/* Main blog listing section */}
-      <section className="container page-section blog-page">
-        <h2 className="section-heading">Insights & updates</h2>
-        <p className="text-muted">Parenting tips, classroom stories and centre updates.</p>
-
-        {/* Blog post cards grid */}
-        <div className="grid blog-list" id="blog-list">
-          {/* Show a message if there are no posts at all */}
-          {displayed.length === 0 && <p>No posts yet.</p>}
-          {/* Render a BlogCard for each post */}
-          {displayed.map((post) => (
-            <BlogCard key={post._id || post.id} post={post} />
-          ))}
+      {/* ── CATEGORY STRIPS ── */}
+      <section className="page-section blog-categories">
+        <div className="container">
+          <div className="blog-categories-grid">
+            {CATEGORIES.map((c, i) => (
+              <div key={i} className="blog-cat-card card" style={{ background: c.bg }}>
+                <div className="blog-cat-icon" style={{ color: c.iconColor }} aria-hidden="true">{c.icon}</div>
+                <div>
+                  <div className="blog-cat-title">{c.title}</div>
+                  <div className="blog-cat-desc">{c.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-	</>
+
+      {/* ── BLOG LIST ── */}
+      <section className="page-section blog-list-section" id="blog-list" aria-labelledby="blog-heading">
+        <div className="container">
+          <span className="accent-label">Latest Posts</span>
+          <h2 id="blog-heading" className="section-heading mb-1">From the Classroom &amp; Community</h2>
+          <p className="section-subtext">
+            Tips for parents, learning milestones, and stories from the heart of Philippi.
+          </p>
+
+          {loading && (
+            <div className="blog-loading" role="status">
+              <div className="blog-loading-spinner" aria-hidden="true" />
+              <span>Loading posts…</span>
+            </div>
+          )}
+          {error && !loading && (
+            <div className="blog-error" role="alert">
+              Could not load posts. Showing sample articles below.
+            </div>
+          )}
+
+          <div className="blog-grid">
+            {displayed.map((post) => (
+              <BlogCard key={post._id || post.id} post={post} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }

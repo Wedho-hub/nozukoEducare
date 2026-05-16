@@ -1,146 +1,199 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Hero from '../../components/hero/Hero'
-import ClassCard from '../../components/classCard/ClassCard'
+import GallerySection from '../../components/gallery/GallerySection'
+import TestimonialSection from '../../components/testimonial/TestimonialSection'
+import BottomCTASection from '../../components/cta/BottomCTASection'
+import MuralBackground from '../../components/mural/MuralBackground'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import './Home.css'
-import { FaUserFriends, FaBus, FaUtensils, FaChild, FaBaby, FaStar, FaPalette, FaBullhorn, FaBook } from 'react-icons/fa'
-import heroImg from '../../assets/images/nozukohero.jpg'
+import {
+  FaShieldAlt, FaBook, FaHeart, FaUserGraduate,
+  FaUtensils, FaBus, FaChild, FaUserFriends,
+  FaHandHoldingHeart, FaLeaf, FaStar
+} from 'react-icons/fa'
 
-// Sample classes for preview. Replace with API data later.
-const SAMPLE_CLASSES = [
-  { id: 'c1', title: 'Toddler Playgroup', ageRange: '2–3 years', times: 'Mon/Wed/Fri 9:00–11:00', summary: 'Play-based learning with story time, music and sensory play.', color: 'var(--color-pink)', icon: 'FaBaby' },
-  { id: 'c2', title: 'Preschool Stars', ageRange: '3–5 years', times: 'Mon–Fri 9:00–12:00', summary: 'Early literacy, numeracy and social skills in a nurturing setting.', color: 'var(--color-sky)', icon: 'FaStar' },
-  { id: 'c3', title: 'Creative Explorers', ageRange: '4–6 years', times: 'Tue/Thu 13:00–15:00', summary: 'Arts, crafts and imaginative play to encourage creativity.', color: 'var(--color-orange)', icon: 'FaPalette' }
+function CountUp({ end = 0, suffix = '', duration = 1200 }) {
+  const [value, setValue] = React.useState(0)
+  const ref = React.useRef(null)
+  const started = React.useRef(false)
+
+  React.useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true
+        let start = null
+        const step = (ts) => {
+          if (!start) start = ts
+          const progress = Math.min((ts - start) / duration, 1)
+          setValue(Math.floor(progress * end))
+          if (progress < 1) requestAnimationFrame(step)
+        }
+        requestAnimationFrame(step)
+      }
+    }, { threshold: 0.3 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [end, duration])
+
+  return <span ref={ref} aria-label={`${end}${suffix}`}>{value}{suffix}</span>
+}
+
+const TRUST_ITEMS = [
+  { icon: <FaShieldAlt />, color: '#E3F2FD', iconColor: '#2196F3', title: 'Safe & Secure', desc: 'Gated premises, child-safe facilities, registered with DSD' },
+  { icon: <FaBook />, color: '#FFF0F5', iconColor: '#D81B60', title: 'CAPS + Montessori', desc: 'National curriculum aligned with Montessori principles' },
+  { icon: <FaUtensils />, color: '#E3F2FD', iconColor: '#2196F3', title: 'Nutritious Meals', desc: 'Healthy breakfast & lunch prepared fresh daily' },
+  { icon: <FaUserGraduate />, color: '#FFF0F5', iconColor: '#D81B60', title: 'Qualified Staff', desc: 'Trained, ECD-certified and loving teachers' },
+  { icon: <FaHeart />, color: '#E3F2FD', iconColor: '#2196F3', title: 'Every Child Valued', desc: 'Small classes — avg. 12 children per teacher' },
+  { icon: <FaBus />, color: '#FFF0F5', iconColor: '#D81B60', title: '4+ Excursions/Year', desc: 'Field trips that broaden horizons and spark curiosity' },
+]
+
+const STATS = [
+  { icon: <FaUserFriends />, end: 50, suffix: '+', label: 'Children enrolled' },
+  { icon: <FaChild />, end: 6, suffix: '', label: 'Age groups (0–6 yrs)' },
+  { icon: <FaUserGraduate />, end: 5, suffix: '+', label: 'Qualified educators' },
+  { icon: <FaStar />, end: 10, suffix: '+', label: 'Years serving Philippi' },
+]
+
+const PREVIEW_CLASSES = [
+  { title: 'Baby & Toddler', ages: '0 – 2 years', icon: '👶', desc: 'Sensory play, songs, and loving full-day care.', color: '#E3F2FD', link: '/classes#toddler' },
+  { title: 'Preschool', ages: '2 – 4 years', icon: '🎨', desc: 'Montessori materials, pre-literacy, creative arts.', color: '#FFF0F5', link: '/classes#preschool' },
+  { title: 'Pre-Grade R & Grade R', ages: '4 – 6 years', icon: '📚', desc: 'Full CAPS curriculum — complete school readiness.', color: '#F3E5F5', link: '/classes#grader' },
 ]
 
 export default function Home() {
-  useDocumentTitle('Home')
-
-  // Small inline CountUp component for stats animation
-  function CountUp({ end = 0, duration = 1200 }) {
-    const [value, setValue] = React.useState(0)
-
-    React.useEffect(() => {
-      let start = null
-      let rafId
-
-      const step = (timestamp) => {
-        if (!start) start = timestamp
-        const progress = Math.min((timestamp - start) / duration, 1)
-        setValue(Math.floor(progress * end))
-        if (progress < 1) rafId = requestAnimationFrame(step)
-      }
-
-      rafId = requestAnimationFrame(step)
-      return () => cancelAnimationFrame(rafId)
-    }, [end, duration])
-
-    return <span aria-hidden="true">{value}</span>
-  }
+  useDocumentTitle('Home — Nozuko Educare Centre, Philippi')
 
   return (
     <>
-      <Hero
-        title="Welcome to Nozuko Educare"
-        subtitle="A safe, nurturing space for early childhood development and playful learning."
-        primaryCta={{ text: 'Enrol now', href: 'whatsapp://send?phone=27813872713' }}
-        secondaryCta={{ text: 'Contact us', href: '/contact' }}
-        bgImage={heroImg}
-      />
+      <Hero />
 
-      <section className="container page-section intro">
-        <div className="intro-grid">
-          {/* Left: Promotions & Blog tease (now inside .intro-text so .intro-text .card-entrance is the promo) */}
-          <div className="intro-text">
-            <aside className="blog-promo card card-entrance" aria-labelledby="promotions">
-              <h3 id="promotions">Promotions & Programs</h3>
-              <p className="text-muted">New at Nozuko — programs designed to enrich learning and family life.</p>
-              <article className="featured-post">
-                <div className="blog-promo__icon" aria-hidden="true"><FaBullhorn /></div>
-                <h4>Introducing <span className="highlight">English lessons</span></h4>
-                <p className="text-muted small">Structured <span className="highlight">English</span> language lessons for preschoolers — starting Feb 2026. Small groups and play-based activities to make learning fun.</p>
-                <h4 style={{ marginTop: 6 }}><span className="highlight">Excursions</span> — 2026 plan</h4>
-                <p className="text-muted small">4 educational excursions planned for 2026 (one each quarter): cultural visits, nature walks and museum days.</p>
-                <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-                  <Link to="/classes" className="btn btn-outline">View programs</Link>
-                  <Link to="/contact" className="btn btn-primary">Register interest</Link>
-                </div>
-              </article>
-            </aside>
-          </div>
+      {/* ── COMMUNITY IMPACT BANNER ── */}
+      <section className="impact-banner">
+        <div className="container impact-banner__inner">
+          <FaLeaf className="impact-banner__icon" aria-hidden="true" />
+          <p>
+            <strong>Making a difference in Victoria Mxenge, Philippi.</strong>{' '}
+            In one of Cape Town's most challenging communities, Nozuko Educare gives children
+            the foundation they deserve — safe, fed, loved, and learning.
+          </p>
+          <a href="/about" className="impact-banner__link">Our story →</a>
+        </div>
+      </section>
 
-          {/* Right: Blog promotion (reusing .welcome-card element to promote latest blog) */}
-          <div className="welcome-card blog-feature card card-entrance" aria-labelledby="latest-blog">
-            <h3 id="latest-blog">From our blog</h3>
-            <article className="featured-post">
-              <div className="blog-feature__icon" aria-hidden="true"><FaBook /></div>
-              <h4>How <span className="highlight">play</span> prepares children for school</h4>
-              <p className="text-muted small">A quick read about the role of play in early development, activities you can try at home, and what we focus on in our classes.</p>
-              <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-                <Link to="/blog" className="btn btn-primary">Read latest</Link>
-                <Link to="/blog" className="btn btn-outline">View all posts</Link>
+      {/* ── STATS ── */}
+      <section className="page-section stats-section">
+        <div className="container">
+          <div className="stats-grid">
+            {STATS.map((s, i) => (
+              <div key={i} className="stat-card card card-entrance">
+                <div className="stat-icon" aria-hidden="true">{s.icon}</div>
+                <div className="stat-number"><CountUp end={s.end} suffix={s.suffix} /></div>
+                <div className="stat-label">{s.label}</div>
               </div>
-            </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="container page-section stats-section">
-        <div className="stats-grid">
-          <div className="stat card card-entrance" role="figure" aria-labelledby="staff-stat">
-            <div className="stat-icon" aria-hidden="true"><FaUserFriends /></div>
-            <div>
-              <div id="staff-stat" className="stat-number"><CountUp end={5} duration={900} />+</div>
-              <div className="stat-label">Trained staff</div>
-            </div>
+      {/* ── WHY PARENTS TRUST US ── */}
+      <section className="page-section bg-green-light" style={{ position: 'relative', overflow: 'hidden' }}>
+        <MuralBackground variant="light" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="section-label-row">
+            <span className="accent-label">Why Parents Choose Us</span>
           </div>
-
-          <div className="stat card card-entrance" role="figure" aria-labelledby="excursion-stat">
-            <div className="stat-icon" aria-hidden="true"><FaBus /></div>
-            <div>
-              <div id="excursion-stat" className="stat-number"><CountUp end={4} duration={900} />+</div>
-              <div className="stat-label">Excursion per year</div>
-            </div>
+          <h2 className="section-heading text-center mb-1">A Place Where Children Thrive</h2>
+          <p className="section-subtext text-center">
+            Every decision we make puts your child's safety, growth, and happiness first.
+          </p>
+          <div className="trust-grid">
+            {TRUST_ITEMS.map((item, i) => (
+              <div key={i} className="trust-card card" style={{ background: item.color }}>
+                <div className="trust-icon" style={{ color: item.iconColor }} aria-hidden="true">
+                  {item.icon}
+                </div>
+                <h4>{item.title}</h4>
+                <p>{item.desc}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="stat card card-entrance" role="figure" aria-labelledby="meals-stat">
-            <div className="stat-icon" aria-hidden="true"><FaUtensils /></div>
-            <div>
-              <div id="meals-stat" className="stat-number"><CountUp end={2} duration={900} />+</div>
-              <div className="stat-label">Meals: breakfast & lunch</div>
-            </div>
+      {/* ── CLASSES PREVIEW ── */}
+      <section className="page-section classes-preview">
+        <div className="container">
+          <span className="accent-label">Our Programmes</span>
+          <h2 className="section-heading mb-1">Learning at Every Age</h2>
+          <p className="section-subtext">
+            From tiny babies to Grade R school-readiness — each class is structured around
+            child development milestones, CAPS requirements, and Montessori principles.
+          </p>
+          <div className="classes-preview-grid">
+            {PREVIEW_CLASSES.map((c, i) => (
+              <Link key={i} to={c.link} className="class-preview-card card" style={{ background: c.color }}>
+                <div className="class-preview-icon" aria-hidden="true">{c.icon}</div>
+                <div>
+                  <div className="class-preview-title">{c.title}</div>
+                  <div className="class-preview-ages">{c.ages}</div>
+                  <p className="class-preview-desc">{c.desc}</p>
+                </div>
+                <span className="class-preview-link">See programme →</span>
+              </Link>
+            ))}
           </div>
+          <div className="mt-4 text-center">
+            <Link to="/classes" className="btn btn-outline px-4 py-2">View all classes &amp; schedules</Link>
+          </div>
+        </div>
+      </section>
 
-          <div className="stat card card-entrance" role="figure" aria-labelledby="size-stat">
-            <div className="stat-icon" aria-hidden="true"><FaChild /></div>
-            <div>
-              <div id="size-stat" className="stat-number"><CountUp end={12} duration={900} />+/-</div>
-              <div className="stat-label">Avg class size</div>
+      {/* ── GALLERY ── */}
+      <GallerySection />
+
+      {/* ── DONOR / PARTNER SECTION ── */}
+      <section className="page-section donor-section" style={{ position: 'relative', overflow: 'hidden' }}>
+        <MuralBackground variant="light" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="donor-inner">
+            <div className="donor-text">
+              <span className="accent-label">Support Our Mission</span>
+              <h2 className="section-heading mb-2">Help Us Change More Lives</h2>
+              <p className="text-muted mb-3">
+                Nozuko Educare operates in Victoria Mxenge — a community facing real hardship.
+                We keep our fees affordable so no child is turned away. Corporate partners,
+                NGOs, and individual donors make that possible.
+              </p>
+              <ul className="donor-list">
+                <li><FaHandHoldingHeart aria-hidden="true" /> <strong>Fund a child's meals</strong> for a full term</li>
+                <li><FaBook aria-hidden="true" /> <strong>Donate learning materials</strong> — books, puzzles, Montessori tools</li>
+                <li><FaBus aria-hidden="true" /> <strong>Sponsor an excursion</strong> — many children have never left Philippi</li>
+                <li><FaLeaf aria-hidden="true" /> <strong>Corporate CSR partnership</strong> — we issue a certificate of impact</li>
+              </ul>
+              <a href="/contact#donate" className="btn btn-amber mt-3 d-inline-block px-4 py-2">Get in touch to donate</a>
+            </div>
+            <div className="donor-badge card">
+              <div className="donor-badge__number">100%</div>
+              <div className="donor-badge__label">of donations go directly to children's programmes</div>
+              <hr className="donor-badge__divider" />
+              <p className="donor-badge__quote">
+                "When a child from Philippi walks into Grade 1 ready to read and count —
+                that's your donation at work."
+              </p>
+              <p className="donor-badge__cite">— Nozuko Mxenge, Founder</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="classes" className="container classes-preview">
-        <h2>Our classes</h2>
-        <p className="text-muted">A selection of classes we offer. View all classes for schedules and full details.</p>
+      {/* ── TESTIMONIALS ── */}
+      <TestimonialSection />
 
-        <div className="grid" aria-live="polite">
-          {SAMPLE_CLASSES.map((c) => {
-            // map icon name string to actual component
-            const iconMap = { FaBaby, FaStar, FaPalette }
-            const Icon = iconMap[c.icon] || FaChild
-            return (
-              <ClassCard key={c.id} c={c} variant="teaser" icon={Icon} color={c.color} />
-            )
-          })}
-        </div>
-
-        <div style={{ marginTop: 16 }}>
-          <Link to="/classes" className="btn btn-outline">View all classes</Link>
-        </div>
-      </section>
+      {/* ── BOTTOM CTA ── */}
+      <BottomCTASection />
     </>
   )
 }

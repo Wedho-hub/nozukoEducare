@@ -2,126 +2,200 @@ import React from 'react'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import Hero from '../../components/hero/Hero'
 import heroImg from '../../assets/images/nozukohero.jpg'
-import './About.css'
-import StaffCard from '../../components/staff/StaffCard'
 import founderImg from '../../assets/images/nozukoFounder.jpeg'
-import { FaShieldAlt, FaPlay, FaUsers } from 'react-icons/fa'
+import StaffCard from '../../components/staff/StaffCard'
+import './About.css'
+import { FaShieldAlt, FaGraduationCap, FaHandHoldingHeart, FaLeaf, FaCheckCircle } from 'react-icons/fa'
 
-// Small ReadMore component to progressively disclose long about text
-function ReadMore() {
-	const [open, setOpen] = React.useState(false)
-	const id = 'about-more'
+const VALUES = [
+  {
+    icon: <FaHandHoldingHeart />,
+    bg: '#EBF7F2',
+    iconColor: '#1A5C45',
+    title: 'Every Child Matters',
+    desc: 'We treat each child as our own — with patience, respect, and unconditional love.'
+  },
+  {
+    icon: <FaGraduationCap />,
+    bg: '#FEF3C7',
+    iconColor: '#D97706',
+    title: 'Excellence in Learning',
+    desc: 'CAPS-aligned and Montessori-inspired — we never compromise on the quality of education.'
+  },
+  {
+    icon: <FaShieldAlt />,
+    bg: '#EBF7F2',
+    iconColor: '#1A5C45',
+    title: 'Safety Above All',
+    desc: 'Gated, registered premises. Our families trust us because we earn that trust every day.'
+  },
+  {
+    icon: <FaLeaf />,
+    bg: '#FEF3C7',
+    iconColor: '#D97706',
+    title: 'Community Roots',
+    desc: "We are from Victoria Mxenge. We understand the challenges — and we're here for the long haul."
+  },
+]
 
-	return (
-		<div className="about-more">
-			<div id={id} className={`about-more__content ${open ? 'open' : ''}`} aria-hidden={!open}>
+const CURRICULUM_POINTS = [
+  'South African CAPS foundation phase principles',
+  'National Early Learning Development Standards (NELDS)',
+  'Montessori-inspired practical life and sensorial activities',
+  'Bilingual learning: isiXhosa and English',
+  'Social-emotional learning (SEL) woven into every day',
+  'School readiness assessment before Grade 1 transition',
+]
 
-				   <p>
-					   <strong>Nozuko Educare Centre</strong> is a leading early childhood development centre in [Your City], South Africa, dedicated to providing high-quality preschool education, child care, and holistic learning experiences. Our nurturing, safe, and stimulating environment encourages children to learn through play, exploration, and guided discovery. We are fully aligned with the South African National Early Learning Development Standards (NELDS) and CAPS-informed foundation phase principles, ensuring every child is well prepared for the transition into formal schooling.
-				   </p>
+const STAFF = [
+  {
+    name: 'Nowethu',
+    role: 'Baby & Toddler Teacher',
+    bio: 'Specialises in early infant care and sensory development for children 0–2 years.',
+    favTime: 'Sensory play and singing time'
+  },
+  {
+    name: 'Busisiwe',
+    role: 'Preschool Teacher',
+    bio: 'Experienced in Montessori methods and early literacy for children 2–4 years.',
+    favTime: 'Montessori work-cycle'
+  },
+  {
+    name: 'Miranda',
+    role: 'Pre-Grade R & Grade R Teacher',
+    bio: 'CAPS-certified Grade R practitioner dedicated to full school readiness.',
+    favTime: 'Creative arts and letter formation'
+  },
+]
 
-				   <p>
-					   In addition to meeting national curriculum requirements, Nozuko Educare is inspired by Montessori educational principles, promoting independence, curiosity, creativity, and confidence. Our experienced teachers support each child to grow at their own pace while developing essential cognitive, social, emotional, and physical skills. We focus on school readiness, language development, numeracy, and social skills, making us a top choice for parents seeking the best preschool in [Your City].
-				   </p>
-
-				   <p>
-					   At Nozuko Educare, we believe that early learning shapes lifelong success. Our commitment is to educate, nurture, and empower young minds—building confident learners who are ready to thrive both in school and in life. Discover why families trust us for quality early childhood education, a safe environment, and a strong foundation for lifelong learning.
-				   </p>
-
-
-				   <h3 className="about-subheading">Our Vision</h3>
-				   <p>
-					   To be the most trusted and accessible community-based early childhood development centre in [Your City], providing high-quality foundation education and empowering children to reach their full potential, regardless of socio-economic background. We aim to be recognized for our excellence in preschool education, child care, and school readiness.
-				   </p>
-
-				   <h3 className="about-subheading">Our Mission</h3>
-				   <ul>
-					   <li>To provide affordable, quality early childhood education and child care to Kasi communities and beyond</li>
-					   <li>To create a safe, caring, and stimulating learning environment for preschoolers</li>
-					   <li>To deliver education aligned with NELDS and CAPS standards, ensuring school readiness</li>
-					   <li>To incorporate Montessori-inspired learning that encourages independence, curiosity, and creativity</li>
-					   <li>To nurture the whole child—intellectually, socially, emotionally, and physically</li>
-					   <li>To partner with parents and the community in shaping confident, lifelong learners prepared for primary school and beyond</li>
-				   </ul>
-			</div>
-
-			<div style={{ marginTop: 12 }}>
-				<button className="btn btn-outline read-more-btn" aria-controls={id} aria-expanded={open} onClick={() => setOpen((s) => !s)}>
-					{open ? 'Read less' : 'Read more'}
-				</button>
-			</div>
-		</div>
-	)
-}
-
-/**
- * About page
- * Use this page to tell parents/stakeholders about your philosophy, teachers and facilities.
- */
 export default function About() {
-	useDocumentTitle('About')
+  useDocumentTitle('About — Nozuko Educare Centre, Philippi')
+  const [missionOpen, setMissionOpen] = React.useState(false)
 
-	return (
-		<>
-			<Hero
-				title="About Nozuko Educare"
-				subtitle="Our mission, values and the team who care for your children"
-				primaryCta={{ text: 'Meet our staff', href: '#meet-team' }}
-				secondaryCta={{ text: 'Contact us', href: '/contact' }}
-				bgImage={heroImg}
-			/>
-			<section className="container page-section about-page">
-				<h2 className="section-heading">About Nozuko Educare</h2>
-								 <div className="about-intro card about-intro-flex">
-									 {/* Flexbox: founder image floats right, bottom-aligned with text */}
-									 <div className="about-text">
-										 <p>
-											 Nozuko Educare was founded in 2001 with a simple but powerful vision: to ensure that every child has access to quality early childhood education, regardless of their background or circumstances.
-										 </p>
-										 <p>
-											 Inspired by her own experiences growing up in the township, the founder of Nozuko Educare recognised the urgent need for affordable, high-quality foundation education for Kasi (township) children. What began as a passion to serve the community has grown into a trusted early learning centre committed to laying strong educational foundations for young learners.
-										 </p>
-										 {/* Read more hidden section */}
-										 <ReadMore />
-									 </div>
-									 <figure className="founder-figure founder-figure-bottom">
-										 <img src={founderImg} alt="Elizabeth Madolo, Founder" className="founder-photo" />
-										 <figcaption className="founder-caption">Elizabeth Madolo - founder</figcaption>
-									 </figure>
-								 </div>
-            
-				<h3>Our Values</h3>
-				<ul className="values">
-					<li>
-						<span className="val-icon" style={{background:'linear-gradient(90deg,var(--color-teal),var(--color-sky))'}} aria-hidden><FaShieldAlt /></span>
-						<strong>Safety first:</strong> We prioritise wellbeing and secure environments.
-					</li>
-					<li>
-						<span className="val-icon" style={{background:'linear-gradient(90deg,var(--color-pink),var(--color-orange))'}} aria-hidden><FaPlay /></span>
-						<strong>Playful learning:</strong> Learning through play and exploration.
-					</li>
-					<li>
-						<span className="val-icon" style={{background:'linear-gradient(90deg,var(--color-sky),var(--color-mint))'}} aria-hidden><FaUsers /></span>
-						<strong>Inclusivity:</strong> We welcome children from diverse backgrounds.
-					</li>
-				</ul>
+  return (
+    <div className="about-page">
+      <Hero
+        title="About Nozuko Educare"
+        subtitle="A community-born early childhood centre giving children in Victoria Mxenge the foundation they deserve."
+        badge="Est. in Philippi, Cape Town"
+        primaryCta={{ text: 'Enrol Your Child', href: 'https://wa.me/27813872713' }}
+        secondaryCta={{ text: 'Our Classes', href: '/classes' }}
+        bgImage={heroImg}
+      />
 
-			<section id="meet-team" className="staff-section">
-				<h3>Meet the staff</h3>
-				<p className="text-muted">Our experienced and caring team. Click a profile to learn more (future work).</p>
+      {/* ── VALUES STRIP ── */}
+      <section className="about-values page-section">
+        <div className="container">
+          <span className="accent-label">Our Core Values</span>
+          <h2 className="section-heading mb-1">What We Stand For</h2>
+          <div className="values-grid">
+            {VALUES.map((v, i) => (
+              <div key={i} className="value-card card" style={{ background: v.bg }}>
+                <div className="value-icon" style={{ color: v.iconColor }} aria-hidden="true">{v.icon}</div>
+                <h4>{v.title}</h4>
+                <p>{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-				<div className="staff-grid">
-					{[
-						{ id: 's1', name: 'Namhla Mlonyeni', role: 'Cook', favoriteTime: 'Lunch time', bio: 'Namhla is passionate about preparing healthy meals and creating a warm dining atmosphere for children.', avatar: null },
-						{ id: 's2', name: 'Nowetu Mancangaza', role: 'Toddlers', favoriteTime: 'Story time', bio: 'Nowetu has 8 years of experience and a passion for music and movement.', avatar: null },
-						{ id: 's3', name: 'Busisiwe Mafanya', role: 'Preschool Teacher', favoriteTime: 'Creative play', bio: 'Busisiwe loves art projects and early literacy activities.', avatar: null },
-						{ id: 's4', name: 'Miranda Dhliwayo', role: 'Lead Teacher', favoriteTime: 'Outdoor play', bio: 'Miranda is trained in early childhood development and loves outdoor exploration.', avatar: null }
-					].map(s => (
-						<StaffCard key={s.id} staff={s} />
-					))}
-				</div>
-			</section>
-		</section>
-		</>
-	)
+      {/* ── FOUNDER / INTRO ── */}
+      <section className="page-section about-intro">
+        <div className="container">
+          <div className="about-intro-grid">
+            <div className="about-intro-img-col">
+              <img
+                src={founderImg}
+                alt="Nozuko Mxenge, Founder of Nozuko Educare Centre"
+                className="about-founder-img"
+              />
+              <div className="about-founder-caption">
+                <strong>Nozuko Mxenge</strong><br />
+                <span>Founder &amp; Director</span>
+              </div>
+            </div>
+            <div className="about-intro-text">
+              <span className="accent-label">Our Story</span>
+              <h2 className="section-heading mb-2">Born in Victoria Mxenge</h2>
+              <p>
+                <strong>Nozuko Educare Centre</strong> was founded with a single belief: that where
+                a child grows up should not determine how far they go. Located in Victoria Mxenge,
+                Philippi — one of Cape Town's most underserved communities — we provide quality
+                early childhood education that is genuinely affordable and deeply loving.
+              </p>
+              <p className="text-muted">
+                We know this neighbourhood. We know its challenges — and we know its strength.
+                Our teachers live here. Our families trust us. And every day, we show up because
+                the children of Philippi deserve the exact same foundation as children anywhere
+                else in Cape Town.
+              </p>
+
+              <div className={`about-mission-extra ${missionOpen ? 'open' : ''}`} aria-hidden={!missionOpen}>
+                <h3 className="about-subheading mt-3">Our Vision</h3>
+                <p>
+                  To be the most trusted and accessible community-based ECD centre in Philippi —
+                  empowering every child to reach their full potential regardless of socio-economic
+                  background.
+                </p>
+                <h3 className="about-subheading">Our Mission</h3>
+                <ul className="about-mission-list">
+                  <li>Affordable, quality early childhood education for Philippi families</li>
+                  <li>Safe, nurturing and stimulating learning environment</li>
+                  <li>NELDS and CAPS-aligned education for school readiness</li>
+                  <li>Montessori-inspired independence, curiosity and creativity</li>
+                  <li>Whole-child development: intellectual, social, emotional, physical</li>
+                  <li>Community partnership — parents and educators working together</li>
+                </ul>
+              </div>
+
+              <button
+                className="btn btn-outline mt-3 read-more-btn"
+                onClick={() => setMissionOpen(s => !s)}
+                aria-expanded={missionOpen}
+              >
+                {missionOpen ? 'Show less' : 'Read our mission & vision'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CURRICULUM ── */}
+      <section className="page-section about-curriculum bg-green-light">
+        <div className="container">
+          <span className="accent-label">Curriculum Approach</span>
+          <h2 className="section-heading mb-1">How We Teach</h2>
+          <p className="section-subtext">
+            We combine the structure of the South African national curriculum with the
+            child-led philosophy of Montessori — giving children both the skills and the love of learning.
+          </p>
+          <div className="curriculum-grid">
+            {CURRICULUM_POINTS.map((point, i) => (
+              <div key={i} className="curriculum-item">
+                <FaCheckCircle className="curriculum-check" aria-hidden="true" />
+                <span>{point}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TEAM ── */}
+      <section className="page-section about-team">
+        <div className="container">
+          <span className="accent-label">Meet the Team</span>
+          <h2 className="section-heading mb-1">Our Dedicated Educators</h2>
+          <p className="section-subtext">
+            ECD-trained, Montessori-aware, and deeply committed to every child in their care.
+          </p>
+          <div className="staff-grid">
+            {STAFF.map((s, i) => (
+              <StaffCard key={i} name={s.name} role={s.role} bio={s.bio} favTime={s.favTime} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  )
 }

@@ -1,0 +1,117 @@
+/* ── MuralBackground — abstract art mural overlay ── */
+.mural {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* ─── Large background numbers ─────────────────────────────────────── */
+.mural__num,
+.mural__letter {
+  position: absolute;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Hero variant — white/pale shapes on dark blue */
+.mural--hero .mural__num,
+.mural--hero .mural__letter {
+  color: rgba(255,255,255,0.06);
+}
+
+/* Light variant — blue/pink shapes on cream/white */
+.mural--light .mural__num   { color: rgba(33,150,243,0.07); }
+.mural--light .mural__letter { color: rgba(240,98,146,0.08); }
+
+.mural__num--1 { font-size: clamp(8rem, 20vw, 18rem); top: -2rem; left: -1rem; transform: rotate(-10deg); }
+.mural__num--2 { font-size: clamp(6rem, 14vw, 14rem); bottom: 0; right: 5%; transform: rotate(8deg); }
+.mural__num--3 { font-size: clamp(5rem, 10vw, 10rem); top: 40%; left: 42%; transform: rotate(-6deg); opacity: 0.6; }
+.mural__letter--a { font-size: clamp(6rem, 16vw, 16rem); top: 10%; right: -1rem; transform: rotate(14deg); }
+.mural__letter--b { font-size: clamp(4rem, 9vw, 9rem); bottom: 8%; left: 30%; transform: rotate(-4deg); }
+
+/* ─── Circles ───────────────────────────────────────────────────────── */
+.mural__circle {
+  position: absolute;
+  border-radius: 50%;
+}
+.mural--hero .mural__circle   { background: rgba(255,255,255,0.06); }
+.mural--light .mural__circle--lg { background: rgba(33,150,243,0.07); }
+.mural--light .mural__circle--md { background: rgba(240,98,146,0.07); }
+
+.mural__circle--lg        { width: clamp(220px, 30vw, 380px); height: clamp(220px, 30vw, 380px); }
+.mural__circle--md        { width: clamp(120px, 18vw, 220px); height: clamp(120px, 18vw, 220px); }
+.mural__circle--top-right  { top: -6rem; right: -6rem; }
+.mural__circle--bottom-left { bottom: -4rem; left: -4rem; }
+
+/* ─── Rings (hollow circles) ────────────────────────────────────────── */
+.mural__ring {
+  position: absolute;
+  border-radius: 50%;
+  width: clamp(100px, 15vw, 200px);
+  height: clamp(100px, 15vw, 200px);
+}
+.mural--hero .mural__ring { border: 3px solid rgba(255,255,255,0.08); background: transparent; }
+.mural--light .mural__ring--top-left   { border: 3px solid rgba(33,150,243,0.12); background: transparent; }
+.mural--light .mural__ring--bottom-right { border: 3px solid rgba(240,98,146,0.12); background: transparent; }
+
+.mural__ring--top-left    { top: 12%; left: 8%; }
+.mural__ring--bottom-right { bottom: 10%; right: 8%; }
+
+/* ─── Dots ──────────────────────────────────────────────────────────── */
+.mural__dot {
+  position: absolute;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+.mural--hero  .mural__dot { background: rgba(255,255,255,0.15); }
+.mural--light .mural__dot:nth-child(odd)  { background: rgba(33,150,243,0.18); }
+.mural--light .mural__dot:nth-child(even) { background: rgba(240,98,146,0.18); }
+
+.mural__dot--1 { top: 22%; left: 18%; width: 8px;  height: 8px; }
+.mural__dot--2 { top: 65%; left: 72%; width: 12px; height: 12px; }
+.mural__dot--3 { top: 38%; right: 22%; width: 7px;  height: 7px; }
+.mural__dot--4 { bottom: 18%; left: 48%; width: 10px; height: 10px; }
+.mural__dot--5 { top: 80%; right: 35%; width: 14px; height: 14px; }
+
+/* ─── Triangles ─────────────────────────────────────────────────────── */
+.mural__tri {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.mural__tri--1 {
+  border-left: 28px solid transparent;
+  border-right: 28px solid transparent;
+  top: 28%; left: 60%;
+  transform: rotate(15deg);
+}
+.mural__tri--2 {
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  bottom: 22%; left: 22%;
+  transform: rotate(-20deg);
+}
+
+.mural--hero  .mural__tri--1 { border-bottom: 48px solid rgba(255,255,255,0.07); }
+.mural--hero  .mural__tri--2 { border-bottom: 32px solid rgba(255,255,255,0.07); }
+.mural--light .mural__tri--1 { border-bottom: 48px solid rgba(139,92,246,0.1); }
+.mural--light .mural__tri--2 { border-bottom: 32px solid rgba(249,115,22,0.1); }
+
+/* ─── Blobs ─────────────────────────────────────────────────────────── */
+.mural__blob {
+  position: absolute;
+  border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+}
+.mural__blob--1 {
+  width: clamp(140px, 20vw, 260px);
+  height: clamp(100px, 14vw, 180px);
+  bottom: 15%;
+  right: 20%;
+}
+.mural--hero  .mural__blob--1 { background: rgba(255,255,255,0.04); }
+.mural--light .mural__blob--1 { background: rgba(240,98,146,0.05); }

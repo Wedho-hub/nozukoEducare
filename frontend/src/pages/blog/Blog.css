@@ -1,9 +1,75 @@
-.blog-page .stack{margin-top:1rem}
-.blog-page .blog-list{margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
-.blog-card{transition:transform .2s ease,box-shadow .2s ease}
-.blog-card:focus-within,.blog-card:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(0,0,0,0.06)}
-.blog-list p{grid-column:1/-1}
+/* ── Category strip ── */
+.blog-categories { background: #fff; padding-top: 2rem; padding-bottom: 2rem; }
+.blog-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.blog-cat-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: none;
+}
+.blog-cat-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+.blog-cat-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--heading);
+  margin-bottom: 0.25rem;
+}
+.blog-cat-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
 
-.section-heading{margin-top:0.4rem;margin-bottom:0.6rem;font-size:1.25rem;color:var(--heading);font-weight:700}
+/* ── Blog list ── */
+.blog-list-section { background: var(--bg); }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
 
-/* Teacher note: consider adding pagination, categories or search */
+/* ── States ── */
+.blog-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--muted);
+  padding: 2rem 0;
+  font-size: 0.95rem;
+}
+.blog-loading-spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--blue-100);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.blog-error {
+  background: var(--yellow-light);
+  border: 1px solid var(--yellow);
+  color: var(--gray-700);
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .blog-categories-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+}

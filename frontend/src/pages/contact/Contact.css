@@ -1,8 +1,201 @@
-.contact-page .container {
-	max-width: 680px;
+/* ── Contact info cards ── */
+.contact-cards-section { background: #fff; }
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 1rem;
 }
-.contact-page h2 {
-	margin-bottom: 0.75rem;
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.75rem 1.25rem;
+  border-radius: var(--radius-lg);
+  text-decoration: none !important;
+  color: inherit;
+  transition: transform .2s, box-shadow .2s;
+}
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(33,150,243,0.1);
+  text-decoration: none !important;
+}
+.contact-card__icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+.contact-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 0.3rem;
+}
+.contact-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+.contact-card__value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--primary);
+  word-break: break-all;
 }
 
-/* Teacher note: connect the form to backend after adding API endpoints */
+/* ── Main section ── */
+.contact-main-section { }
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ── Form ── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.1rem;
+}
+.form-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gray-800);
+}
+.form-control, .form-select {
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--gray-300);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--gray-800);
+  background: #fff;
+  transition: border-color .18s;
+  width: 100%;
+}
+.form-control:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(33,150,243,0.1);
+}
+textarea.form-control { resize: vertical; min-height: 130px; }
+
+.contact-submit-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .2s;
+  box-shadow: 0 4px 14px rgba(33,150,243,0.25);
+  width: 100%;
+}
+.contact-submit-btn:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+.contact-submit-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+.contact-alert {
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+.contact-alert--success { background: var(--blue-50); color: var(--primary); border: 1px solid var(--blue-200); }
+.contact-alert--error { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+
+/* ── Donate sidebar ── */
+.donate-box {
+  padding: 2rem;
+  background: var(--primary) !important;
+  border: none;
+  color: rgba(255,255,255,0.9);
+}
+.donate-box__icon {
+  font-size: 2.2rem;
+  color: var(--pink-400);
+  margin-bottom: 0.75rem;
+}
+.donate-box__title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+.donate-box p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.donate-box h4 {
+  color: var(--pink-400);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.donate-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.8);
+}
+.donate-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #25D366;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none !important;
+  transition: all .2s;
+}
+.donate-cta-btn:hover { background: #1ebe5d; color: #fff; transform: translateY(-1px); }
+
+.address-box {
+  padding: 1.5rem;
+}
+.address-box h4 { font-size: 0.95rem; font-weight: 700; color: var(--heading); margin-bottom: 0.75rem; }
+.address-box address {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+.address-box__hours { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .contact-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .contact-main-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .contact-cards-grid { grid-template-columns: 1fr 1fr; }
+}

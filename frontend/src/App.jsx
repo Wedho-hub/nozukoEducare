@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
+import FloatingWhatsAppButton from './components/cta/FloatingWhatsAppButton'
 import Home from './pages/home/Home'
 import About from './pages/about/About'
 import Blog from './pages/blog/Blog'
@@ -41,6 +42,7 @@ export default function App() {
       </main>
 
       <Footer />
+      <FloatingWhatsAppButton />
     </>
   )
 }
