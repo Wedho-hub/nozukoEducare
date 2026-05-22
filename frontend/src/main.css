@@ -1,13 +1,13 @@
 :root {
-  /* ── Sky Blues (friendly, open, educational) ── */
-  --blue-950: #1A2E5A;
-  --blue-900: #1A3F6F;
-  --blue-800: #1976D2;
-  --blue-700: #2196F3;
-  --blue-600: #42B4E6;
-  --blue-200: #90CAF9;
-  --blue-100: #BBDEFB;
-  --blue-50:  #E3F2FD;
+  /* ── Baby Blues (nursery soft — powder/cornflower family) ── */
+  --blue-950: #1A3050;
+  --blue-900: #1C4A7A;
+  --blue-800: #2E7FB5;
+  --blue-700: #4A9FD5;
+  --blue-600: #6BB8E3;
+  --blue-200: #AACFE8;
+  --blue-100: #D0E8F5;
+  --blue-50:  #E8F4FB;
 
   /* ── Bubblegum Pinks (warm, playful, nurturing) ── */
   --pink-700: #AD1457;
@@ -38,15 +38,15 @@
   --gray-50:  #F9FAFB;
 
   /* ── Semantic tokens ── */
-  --primary:        #2196F3;
-  --primary-dark:   #1976D2;
-  --primary-light:  #E3F2FD;
+  --primary:        #4A9FD5;
+  --primary-dark:   #2E7FB5;
+  --primary-light:  #E8F4FB;
   --secondary:      #F06292;
   --secondary-dark: #D81B60;
   --secondary-light: #FFF0F5;
-  --heading:  #1A3F6F;
+  --heading:  #1C4A7A;
   --muted:    #6B7280;
-  --bg:       #FAFAFA;
+  --bg:       #FAFCFE;
   --card:     #FFFFFF;
   --radius:   12px;
   --radius-lg: 20px;
@@ -81,14 +81,14 @@ a:hover, a:focus { text-decoration: underline; }
   background: var(--primary);
   border-color: var(--primary);
   color: white;
-  box-shadow: 0 4px 14px rgba(33,150,243,0.28);
+  box-shadow: 0 4px 14px rgba(74,159,213,0.30);
   transition: all .2s;
 }
 .btn-primary:hover, .btn-primary:focus {
   background: var(--primary-dark);
   border-color: var(--primary-dark);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(33,150,243,0.38);
+  box-shadow: 0 6px 20px rgba(74,159,213,0.40);
 }
 .btn-amber {
   background: var(--secondary);
@@ -119,15 +119,22 @@ a:hover, a:focus { text-decoration: underline; }
 .card {
   background: var(--card);
   border-radius: var(--radius);
-  box-shadow: 0 2px 16px rgba(26,63,111,0.07);
-  border: 1px solid rgba(26,63,111,0.06);
+  box-shadow: 0 2px 16px rgba(28,74,122,0.08);
+  border: 1px solid rgba(28,74,122,0.07);
 }
 
 /* ── Layout ── */
 .container {
-  width: min(1120px, 94%);
+  width: min(1120px, 100%);
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 600px) {
+  .container { padding: 2rem 1.5rem; }
+}
+@media (min-width: 1200px) {
+  .container { padding: 2rem 0; }
 }
 
 /* ── Accessibility ── */
@@ -140,7 +147,7 @@ a:hover, a:focus { text-decoration: underline; }
 .text-muted { color: var(--muted); }
 .text-primary { color: var(--primary); }
 .section-heading {
-  font-size: 1.9rem;
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
   font-weight: 800;
   color: var(--heading);
   margin-bottom: 0.5rem;
@@ -163,5 +170,8 @@ a:hover, a:focus { text-decoration: underline; }
   margin-bottom: 0.75rem;
 }
 
-/* ── Subtle transitions ── */
-* { transition: color .15s ease, background-color .15s ease, border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+/* ── Subtle color transitions only — transform/box-shadow handled per component ── */
+* { transition: color .15s ease, background-color .15s ease, border-color .15s ease; }
+
+/* ── Touch tap highlight removal ── */
+a, button, [role="button"] { -webkit-tap-highlight-color: transparent; }

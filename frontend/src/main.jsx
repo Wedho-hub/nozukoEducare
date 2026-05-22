@@ -6,6 +6,7 @@ import { AppProvider } from './context/AppContext'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './main.css'
 import './styles/global.css'
+import './styles/animations.css'
 import App from './App'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -23,9 +24,9 @@ createRoot(document.getElementById('root')).render(
 	</React.StrictMode>
 )
 
-// Initialize AOS (Animate On Scroll) after DOM is ready
+// Initialize AOS after DOM is ready
 function initAOS() {
-	AOS.init({ duration: 700, once: true })
+	AOS.init({ duration: 560, once: true, easing: 'ease-out-back', offset: 60 })
 }
 
 // Trigger AOS init on load

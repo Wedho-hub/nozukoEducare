@@ -24,7 +24,7 @@
 }
 
 /* Light variant — blue/pink shapes on cream/white */
-.mural--light .mural__num   { color: rgba(33,150,243,0.07); }
+.mural--light .mural__num   { color: rgba(74,159,213,0.07); }
 .mural--light .mural__letter { color: rgba(240,98,146,0.08); }
 
 .mural__num--1 { font-size: clamp(8rem, 20vw, 18rem); top: -2rem; left: -1rem; transform: rotate(-10deg); }
@@ -39,7 +39,7 @@
   border-radius: 50%;
 }
 .mural--hero .mural__circle   { background: rgba(255,255,255,0.06); }
-.mural--light .mural__circle--lg { background: rgba(33,150,243,0.07); }
+.mural--light .mural__circle--lg { background: rgba(74,159,213,0.07); }
 .mural--light .mural__circle--md { background: rgba(240,98,146,0.07); }
 
 .mural__circle--lg        { width: clamp(220px, 30vw, 380px); height: clamp(220px, 30vw, 380px); }
@@ -55,7 +55,7 @@
   height: clamp(100px, 15vw, 200px);
 }
 .mural--hero .mural__ring { border: 3px solid rgba(255,255,255,0.08); background: transparent; }
-.mural--light .mural__ring--top-left   { border: 3px solid rgba(33,150,243,0.12); background: transparent; }
+.mural--light .mural__ring--top-left   { border: 3px solid rgba(74,159,213,0.12); background: transparent; }
 .mural--light .mural__ring--bottom-right { border: 3px solid rgba(240,98,146,0.12); background: transparent; }
 
 .mural__ring--top-left    { top: 12%; left: 8%; }
@@ -69,7 +69,7 @@
   height: 10px;
 }
 .mural--hero  .mural__dot { background: rgba(255,255,255,0.15); }
-.mural--light .mural__dot:nth-child(odd)  { background: rgba(33,150,243,0.18); }
+.mural--light .mural__dot:nth-child(odd)  { background: rgba(74,159,213,0.18); }
 .mural--light .mural__dot:nth-child(even) { background: rgba(240,98,146,0.18); }
 
 .mural__dot--1 { top: 22%; left: 18%; width: 8px;  height: 8px; }

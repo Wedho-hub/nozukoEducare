@@ -42,11 +42,11 @@ function CountUp({ end = 0, suffix = '', duration = 1200 }) {
 }
 
 const TRUST_ITEMS = [
-  { icon: <FaShieldAlt />, color: '#E3F2FD', iconColor: '#2196F3', title: 'Safe & Secure', desc: 'Gated premises, child-safe facilities, registered with DSD' },
+  { icon: <FaShieldAlt />, color: '#E8F4FB', iconColor: '#4A9FD5', title: 'Safe & Secure', desc: 'Gated premises, child-safe facilities, registered with DSD' },
   { icon: <FaBook />, color: '#FFF0F5', iconColor: '#D81B60', title: 'CAPS + Montessori', desc: 'National curriculum aligned with Montessori principles' },
-  { icon: <FaUtensils />, color: '#E3F2FD', iconColor: '#2196F3', title: 'Nutritious Meals', desc: 'Healthy breakfast & lunch prepared fresh daily' },
+  { icon: <FaUtensils />, color: '#E8F4FB', iconColor: '#4A9FD5', title: 'Nutritious Meals', desc: 'Healthy breakfast & lunch prepared fresh daily' },
   { icon: <FaUserGraduate />, color: '#FFF0F5', iconColor: '#D81B60', title: 'Qualified Staff', desc: 'Trained, ECD-certified and loving teachers' },
-  { icon: <FaHeart />, color: '#E3F2FD', iconColor: '#2196F3', title: 'Every Child Valued', desc: 'Small classes — avg. 12 children per teacher' },
+  { icon: <FaHeart />, color: '#E8F4FB', iconColor: '#4A9FD5', title: 'Every Child Valued', desc: 'Small classes — avg. 12 children per teacher' },
   { icon: <FaBus />, color: '#FFF0F5', iconColor: '#D81B60', title: '4+ Excursions/Year', desc: 'Field trips that broaden horizons and spark curiosity' },
 ]
 
@@ -58,7 +58,7 @@ const STATS = [
 ]
 
 const PREVIEW_CLASSES = [
-  { title: 'Baby & Toddler', ages: '0 – 2 years', icon: '👶', desc: 'Sensory play, songs, and loving full-day care.', color: '#E3F2FD', link: '/classes#toddler' },
+  { title: 'Baby & Toddler', ages: '0 – 2 years', icon: '👶', desc: 'Sensory play, songs, and loving full-day care.', color: '#E8F4FB', link: '/classes#toddler' },
   { title: 'Preschool', ages: '2 – 4 years', icon: '🎨', desc: 'Montessori materials, pre-literacy, creative arts.', color: '#FFF0F5', link: '/classes#preschool' },
   { title: 'Pre-Grade R & Grade R', ages: '4 – 6 years', icon: '📚', desc: 'Full CAPS curriculum — complete school readiness.', color: '#F3E5F5', link: '/classes#grader' },
 ]
@@ -86,10 +86,12 @@ export default function Home() {
       {/* ── STATS ── */}
       <section className="page-section stats-section">
         <div className="container">
-          <div className="stats-grid">
+          <div className="stats-grid stagger-children">
             {STATS.map((s, i) => (
-              <div key={i} className="stat-card card card-entrance">
-                <div className="stat-icon" aria-hidden="true">{s.icon}</div>
+              <div key={i} className="stat-card card spring-card"
+                   data-aos="spring-up" data-aos-delay={i * 80}>
+                <div className="stat-icon" aria-hidden="true"
+                     data-aos="spin-in" data-aos-delay={i * 80 + 180}>{s.icon}</div>
                 <div className="stat-number"><CountUp end={s.end} suffix={s.suffix} /></div>
                 <div className="stat-label">{s.label}</div>
               </div>
@@ -105,14 +107,16 @@ export default function Home() {
           <div className="section-label-row">
             <span className="accent-label">Why Parents Choose Us</span>
           </div>
-          <h2 className="section-heading text-center mb-1">A Place Where Children Thrive</h2>
-          <p className="section-subtext text-center">
+          <h2 className="section-heading text-center mb-1" data-aos="fade-up">A Place Where Children Thrive</h2>
+          <p className="section-subtext text-center" data-aos="fade-up" data-aos-delay="60">
             Every decision we make puts your child's safety, growth, and happiness first.
           </p>
           <div className="trust-grid">
             {TRUST_ITEMS.map((item, i) => (
-              <div key={i} className="trust-card card" style={{ background: item.color }}>
-                <div className="trust-icon" style={{ color: item.iconColor }} aria-hidden="true">
+              <div key={i} className="trust-card card spring-card" style={{ background: item.color }}
+                   data-aos="spring-up" data-aos-delay={i * 70}>
+                <div className="trust-icon" style={{ color: item.iconColor }} aria-hidden="true"
+                     data-aos="pop-in" data-aos-delay={i * 70 + 160}>
                   {item.icon}
                 </div>
                 <h4>{item.title}</h4>
@@ -127,15 +131,17 @@ export default function Home() {
       <section className="page-section classes-preview">
         <div className="container">
           <span className="accent-label">Our Programmes</span>
-          <h2 className="section-heading mb-1">Learning at Every Age</h2>
-          <p className="section-subtext">
+          <h2 className="section-heading mb-1" data-aos="fade-up">Learning at Every Age</h2>
+          <p className="section-subtext" data-aos="fade-up" data-aos-delay="60">
             From tiny babies to Grade R school-readiness — each class is structured around
             child development milestones, CAPS requirements, and Montessori principles.
           </p>
           <div className="classes-preview-grid">
             {PREVIEW_CLASSES.map((c, i) => (
-              <Link key={i} to={c.link} className="class-preview-card card" style={{ background: c.color }}>
-                <div className="class-preview-icon" aria-hidden="true">{c.icon}</div>
+              <Link key={i} to={c.link} className="class-preview-card card spring-card" style={{ background: c.color }}
+                    data-aos="spring-up" data-aos-delay={i * 90}>
+                <div className="class-preview-icon" aria-hidden="true"
+                     data-aos="pop-in" data-aos-delay={i * 90 + 160}>{c.icon}</div>
                 <div>
                   <div className="class-preview-title">{c.title}</div>
                   <div className="class-preview-ages">{c.ages}</div>
@@ -159,7 +165,7 @@ export default function Home() {
         <MuralBackground variant="light" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="donor-inner">
-            <div className="donor-text">
+            <div className="donor-text" data-aos="fade-right">
               <span className="accent-label">Support Our Mission</span>
               <h2 className="section-heading mb-2">Help Us Change More Lives</h2>
               <p className="text-muted mb-3">
@@ -175,7 +181,7 @@ export default function Home() {
               </ul>
               <a href="/contact#donate" className="btn btn-amber mt-3 d-inline-block px-4 py-2">Get in touch to donate</a>
             </div>
-            <div className="donor-badge card">
+            <div className="donor-badge card spring-card" data-aos="spring-up" data-aos-delay="200">
               <div className="donor-badge__number">100%</div>
               <div className="donor-badge__label">of donations go directly to children's programmes</div>
               <hr className="donor-badge__divider" />

@@ -8,8 +8,17 @@ import './Hero.css'
  * Hero — reusable page banner.
  * Defaults are set for the homepage emotional hook.
  */
+const DEFAULT_TITLE = (
+  <>
+    Nurturing{' '}
+    <span className="hero__title-pink">Every Child</span>
+    {' '}in{' '}
+    <span className="hero__title-blue">Victoria Mxenge</span>
+  </>
+)
+
 export default function Hero({
-  title = 'Nurturing Every Child in Victoria Mxenge',
+  title = DEFAULT_TITLE,
   subtitle = 'Quality early childhood education in the heart of Philippi, Cape Town. CAPS-aligned, Montessori-inspired — because every child deserves a great start.',
   badge = 'Ages 0 – 6 years',
   primaryCta  = { text: 'Enrol Your Child', href: 'https://wa.me/27813872713' },
@@ -83,7 +92,7 @@ export default function Hero({
         >
           {primaryCta && (
             <a
-              className="hero__cta hero__cta--primary"
+              className="hero__cta hero__cta--primary cta-pulse"
               href={primaryCta.href}
               target={primaryCta.href.startsWith('http') ? '_blank' : undefined}
               rel={primaryCta.href.startsWith('http') ? 'noopener noreferrer' : undefined}

@@ -76,7 +76,7 @@
   padding: 1.5rem;
   border-radius: var(--radius);
   border: none;
-  box-shadow: 0 2px 12px rgba(26,63,111,0.06);
+  box-shadow: 0 2px 12px rgba(28,74,122,0.06);
 }
 .trust-icon {
   font-size: 1.8rem;
@@ -109,14 +109,14 @@
   gap: 0.5rem;
   padding: 1.75rem 1.5rem;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(26,63,111,0.07);
+  border: 1px solid rgba(28,74,122,0.07);
   text-decoration: none !important;
   color: inherit;
   transition: transform .2s, box-shadow .2s;
 }
 .class-preview-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(33,150,243,0.12);
+  box-shadow: 0 8px 28px rgba(74,159,213,0.12);
   text-decoration: none !important;
 }
 .class-preview-icon {
@@ -133,7 +133,7 @@
   display: inline-block;
   font-size: 0.78rem;
   font-weight: 700;
-  background: rgba(33,150,243,0.1);
+  background: rgba(74,159,213,0.1);
   color: var(--primary);
   padding: 0.2rem 0.6rem;
   border-radius: 999px;

@@ -19,7 +19,7 @@
 
 .testimonial-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(33,150,243,0.1);
+  box-shadow: 0 8px 28px rgba(74,159,213,0.1);
 }
 
 .testimonial-quote-icon {

@@ -1,9 +1,9 @@
 /* global.css — page-level spacing, grid helpers, animation utilities */
 
-/* ── Page section spacing ── */
-.page-section { padding: 4rem 0; }
-.page-section--sm { padding: 2.5rem 0; }
-.page-section--lg { padding: 5.5rem 0; }
+/* ── Page section spacing (fluid) ── */
+.page-section    { padding: clamp(2.5rem, 6vw, 4rem) 0; }
+.page-section--sm { padding: clamp(1.75rem, 4vw, 2.5rem) 0; }
+.page-section--lg { padding: clamp(3rem, 8vw, 5.5rem) 0; }
 
 /* ── Grid helpers ── */
 .grid {
@@ -22,23 +22,12 @@
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
 }
 
-/* ── Card entrance animation ── */
+/* ── Card entrance animation (legacy — only applies to .card-entrance directly) ── */
 @keyframes cardIn {
   from { opacity: 0; transform: translateY(16px) scale(0.99); }
   to   { opacity: 1; transform: none; }
 }
 .card-entrance { animation: cardIn .55s cubic-bezier(.2,.9,.3,1) both; }
-.grid > * {
-  opacity: 0;
-  transform: translateY(16px);
-  animation: cardIn .55s cubic-bezier(.2,.9,.3,1) both;
-}
-.grid > *:nth-child(1) { animation-delay: .05s; }
-.grid > *:nth-child(2) { animation-delay: .10s; }
-.grid > *:nth-child(3) { animation-delay: .15s; }
-.grid > *:nth-child(4) { animation-delay: .20s; }
-.grid > *:nth-child(5) { animation-delay: .25s; }
-.grid > *:nth-child(6) { animation-delay: .30s; }
 
 /* ── Fade-up utility ── */
 .animate-fade-up {
@@ -53,7 +42,7 @@
 
 /* ── Decorative background patterns ── */
 .bg-dots {
-  background-image: radial-gradient(rgba(33,150,243,0.05) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(74,159,213,0.05) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
 }
 .bg-blue-light  { background: var(--blue-50); }
@@ -155,12 +144,14 @@
   display: grid;
   place-items: center;
   margin-bottom: 0.6rem;
-  box-shadow: 0 4px 12px rgba(33,150,243,0.28);
+  box-shadow: 0 4px 12px rgba(74,159,213,0.28);
 }
 .step-label { font-size: 0.88rem; font-weight: 600; color: var(--gray-800); }
 
 /* ── Mobile helpers ── */
 @media (max-width: 600px) {
-  .page-section { padding: 2.5rem 0; }
-  .section-heading { font-size: 1.5rem; }
+  .section-subtext { font-size: 0.97rem; }
+  .grid { gap: 1rem; }
+  .visual-break { padding: 2rem 0; }
+  .steps-row { gap: 0.75rem; }
 }

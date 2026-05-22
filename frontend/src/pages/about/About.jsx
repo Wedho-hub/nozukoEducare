@@ -10,29 +10,29 @@ import { FaShieldAlt, FaGraduationCap, FaHandHoldingHeart, FaLeaf, FaCheckCircle
 const VALUES = [
   {
     icon: <FaHandHoldingHeart />,
-    bg: '#EBF7F2',
-    iconColor: '#1A5C45',
+    bg: '#E8F4FB',
+    iconColor: '#4A9FD5',
     title: 'Every Child Matters',
     desc: 'We treat each child as our own — with patience, respect, and unconditional love.'
   },
   {
     icon: <FaGraduationCap />,
-    bg: '#FEF3C7',
-    iconColor: '#D97706',
+    bg: '#FFF0F5',
+    iconColor: '#D81B60',
     title: 'Excellence in Learning',
     desc: 'CAPS-aligned and Montessori-inspired — we never compromise on the quality of education.'
   },
   {
     icon: <FaShieldAlt />,
-    bg: '#EBF7F2',
-    iconColor: '#1A5C45',
+    bg: '#E8F4FB',
+    iconColor: '#4A9FD5',
     title: 'Safety Above All',
     desc: 'Gated, registered premises. Our families trust us because we earn that trust every day.'
   },
   {
     icon: <FaLeaf />,
-    bg: '#FEF3C7',
-    iconColor: '#D97706',
+    bg: '#FFF0F5',
+    iconColor: '#D81B60',
     title: 'Community Roots',
     desc: "We are from Victoria Mxenge. We understand the challenges — and we're here for the long haul."
   },
@@ -87,11 +87,13 @@ export default function About() {
       <section className="about-values page-section">
         <div className="container">
           <span className="accent-label">Our Core Values</span>
-          <h2 className="section-heading mb-1">What We Stand For</h2>
+          <h2 className="section-heading mb-1" data-aos="fade-up">What We Stand For</h2>
           <div className="values-grid">
             {VALUES.map((v, i) => (
-              <div key={i} className="value-card card" style={{ background: v.bg }}>
-                <div className="value-icon" style={{ color: v.iconColor }} aria-hidden="true">{v.icon}</div>
+              <div key={i} className="value-card card spring-card" style={{ background: v.bg }}
+                   data-aos="spring-up" data-aos-delay={i * 80}>
+                <div className="value-icon" style={{ color: v.iconColor }} aria-hidden="true"
+                     data-aos="pop-in" data-aos-delay={i * 80 + 160}>{v.icon}</div>
                 <h4>{v.title}</h4>
                 <p>{v.desc}</p>
               </div>
@@ -104,7 +106,7 @@ export default function About() {
       <section className="page-section about-intro">
         <div className="container">
           <div className="about-intro-grid">
-            <div className="about-intro-img-col">
+            <div className="about-intro-img-col" data-aos="fade-right">
               <img
                 src={founderImg}
                 alt="Nozuko Mxenge, Founder of Nozuko Educare Centre"
@@ -115,7 +117,7 @@ export default function About() {
                 <span>Founder &amp; Director</span>
               </div>
             </div>
-            <div className="about-intro-text">
+            <div className="about-intro-text" data-aos="fade-left">
               <span className="accent-label">Our Story</span>
               <h2 className="section-heading mb-2">Born in Victoria Mxenge</h2>
               <p>

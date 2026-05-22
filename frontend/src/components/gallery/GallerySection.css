@@ -12,7 +12,7 @@
   border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 4/3;
-  box-shadow: 0 2px 12px rgba(33,150,243,0.08);
+  box-shadow: 0 2px 12px rgba(74,159,213,0.08);
 }
 
 .gallery-img {
@@ -28,7 +28,7 @@
 .gallery-label {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  background: linear-gradient(transparent, rgba(26,46,90,0.72));
+  background: linear-gradient(transparent, rgba(26,48,80,0.72));
   color: #fff;
   font-size: 0.82rem;
   font-weight: 700;

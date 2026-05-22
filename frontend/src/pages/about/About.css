@@ -10,7 +10,7 @@
   padding: 1.5rem;
   border-radius: var(--radius);
   border: none;
-  box-shadow: 0 2px 12px rgba(26,63,111,0.05);
+  box-shadow: 0 2px 12px rgba(28,74,122,0.05);
 }
 .value-icon {
   font-size: 1.75rem;
@@ -42,7 +42,7 @@
   width: 100%;
   max-width: 280px;
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 32px rgba(26,63,111,0.14);
+  box-shadow: 0 8px 32px rgba(28,74,122,0.14);
   object-fit: cover;
   aspect-ratio: 3/4;
 }

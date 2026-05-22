@@ -26,7 +26,7 @@
 .age-card {
   padding: 1.75rem;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(33,150,243,0.07);
+  border: 1px solid rgba(74,159,213,0.07);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -87,7 +87,7 @@
   justify-content: space-between;
   margin-top: auto;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(33,150,243,0.08);
+  border-top: 1px solid rgba(74,159,213,0.08);
 }
 .age-card__teacher {
   font-size: 0.85rem;
@@ -162,7 +162,7 @@
   display: grid;
   place-items: center;
   margin: 0 auto 0.75rem;
-  box-shadow: 0 4px 14px rgba(33,150,243,0.25);
+  box-shadow: 0 4px 14px rgba(74,159,213,0.25);
 }
 .enrol-step__label {
   font-size: 1rem;
