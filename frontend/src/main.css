@@ -170,6 +170,29 @@ a:hover, a:focus { text-decoration: underline; }
   margin-bottom: 0.75rem;
 }
 
+/* ── Rainbow stripe — fixed top-of-page bar ── */
+.rainbow-stripe {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1031;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    #E63946 0%,    #E63946 16.66%,
+    #F4A261 16.66%,#F4A261 33.33%,
+    #FFD166 33.33%,#FFD166 50%,
+    #06D6A0 50%,   #06D6A0 66.66%,
+    #4A9FD5 66.66%,#4A9FD5 83.33%,
+    #9B5DE5 83.33%,#9B5DE5 100%
+  );
+}
+
+/* ── Fredoka One for display headings ── */
+.section-heading,
+.hero__title {
+  font-family: 'Fredoka One', 'Fredoka', 'Nunito', sans-serif;
+}
+
 /* ── Subtle color transitions only — transform/box-shadow handled per component ── */
 * { transition: color .15s ease, background-color .15s ease, border-color .15s ease; }
 

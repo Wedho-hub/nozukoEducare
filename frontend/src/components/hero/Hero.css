@@ -25,6 +25,16 @@
   z-index: 1;
 }
 
+/* Repeating circle pattern texture */
+.hero__pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='28' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
 .hero__content {
   position: relative;
   z-index: 2;
@@ -33,6 +43,47 @@
   gap: 1rem;
   padding-top: 6rem;   /* clear fixed navbar */
   padding-bottom: 4rem;
+}
+
+/* ── Emoji strip row ── */
+.hero__emoji-row {
+  font-size: 1.6rem;
+  letter-spacing: 0.25em;
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+
+/* ── Floating pill badges (desktop only) ── */
+.hero__float-badge {
+  position: absolute;
+  z-index: 4;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  animation: float 3.8s ease-in-out infinite;
+}
+.hero__float-badge--star {
+  background: #FFD166;
+  color: #1B2A6B;
+  bottom: 28%;
+  right: 6%;
+  animation-delay: 0s;
+}
+.hero__float-badge--check {
+  background: #06D6A0;
+  color: #fff;
+  top: 28%;
+  right: 4%;
+  animation-delay: 1.2s;
+}
+
+@media (max-width: 900px) {
+  .hero__float-badge { display: none; }
 }
 
 /* ── Badge ── */

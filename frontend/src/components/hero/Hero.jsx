@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import heroDefault from '../../assets/images/nozukohero.jpg'
 import MuralBackground from '../mural/MuralBackground'
+import BubbleField from '../bubble/BubbleField'
 import './Hero.css'
 
 /**
@@ -40,15 +41,36 @@ export default function Hero({
       {/* Dark overlay for text legibility */}
       <div className="hero__overlay" aria-hidden="true" />
 
+      {/* Repeating SVG circle texture */}
+      <div className="hero__pattern" aria-hidden="true" />
+
+      {/* Floating colour bubbles */}
+      <BubbleField variant="hero" />
+
       {/* Abstract mural art — numbers, shapes, rings */}
       <MuralBackground variant="hero" />
 
+      {/* Floating pill badges */}
+      <div className="hero__float-badge hero__float-badge--star" aria-hidden="true">⭐ Loved by families</div>
+      <div className="hero__float-badge hero__float-badge--check" aria-hidden="true">✅ DSD Registered</div>
+
       <div className="container hero__content">
+        {/* Emoji decoration strip */}
+        <motion.div
+          className="hero__emoji-row"
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          aria-hidden="true"
+        >
+          🌈 ⭐ 🎨 🎉 🏫
+        </motion.div>
+
         {badge && (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
+            transition={{ duration: 0.45, delay: 0.05 }}
           >
             <span className="hero__badge">{badge}</span>
           </motion.div>

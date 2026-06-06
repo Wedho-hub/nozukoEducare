@@ -3,6 +3,7 @@
   border-bottom: 1px solid rgba(74,159,213,0.12);
   box-shadow: 0 2px 16px rgba(28,74,122,0.07);
   padding: 0.6rem 0;
+  top: 5px !important; /* clear the 5px rainbow stripe */
 }
 
 /* ── Brand ── */

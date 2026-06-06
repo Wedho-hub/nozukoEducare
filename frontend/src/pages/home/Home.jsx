@@ -5,6 +5,7 @@ import GallerySection from '../../components/gallery/GallerySection'
 import TestimonialSection from '../../components/testimonial/TestimonialSection'
 import BottomCTASection from '../../components/cta/BottomCTASection'
 import MuralBackground from '../../components/mural/MuralBackground'
+import BubbleField from '../../components/bubble/BubbleField'
 import useDocumentTitle from '../../hooks/useDocumentTitle'
 import './Home.css'
 import {
@@ -41,14 +42,21 @@ function CountUp({ end = 0, suffix = '', duration = 1200 }) {
   return <span ref={ref} aria-label={`${end}${suffix}`}>{value}{suffix}</span>
 }
 
+/* Rainbow border colors cycling across cards */
+const RAINBOW = ['#E63946','#F4A261','#FFD166','#06D6A0','#4A9FD5','#9B5DE5']
+
 const TRUST_ITEMS = [
-  { icon: <FaShieldAlt />, color: '#E8F4FB', iconColor: '#4A9FD5', title: 'Safe & Secure', desc: 'Gated premises, child-safe facilities, registered with DSD' },
-  { icon: <FaBook />, color: '#FFF0F5', iconColor: '#D81B60', title: 'CAPS + Montessori', desc: 'National curriculum aligned with Montessori principles' },
-  { icon: <FaUtensils />, color: '#E8F4FB', iconColor: '#4A9FD5', title: 'Nutritious Meals', desc: 'Healthy breakfast & lunch prepared fresh daily' },
-  { icon: <FaUserGraduate />, color: '#FFF0F5', iconColor: '#D81B60', title: 'Qualified Staff', desc: 'Trained, ECD-certified and loving teachers' },
-  { icon: <FaHeart />, color: '#E8F4FB', iconColor: '#4A9FD5', title: 'Every Child Valued', desc: 'Small classes — avg. 12 children per teacher' },
-  { icon: <FaBus />, color: '#FFF0F5', iconColor: '#D81B60', title: '4+ Excursions/Year', desc: 'Field trips that broaden horizons and spark curiosity' },
+  { icon: <FaShieldAlt />, color: '#fff', iconColor: '#E63946', title: 'Safe & Secure', desc: 'Gated premises, child-safe facilities, registered with DSD' },
+  { icon: <FaBook />, color: '#fff', iconColor: '#F4A261', title: 'CAPS + Montessori', desc: 'National curriculum aligned with Montessori principles' },
+  { icon: <FaUtensils />, color: '#fff', iconColor: '#06D6A0', title: 'Nutritious Meals', desc: 'Healthy breakfast & lunch prepared fresh daily' },
+  { icon: <FaUserGraduate />, color: '#fff', iconColor: '#4A9FD5', title: 'Qualified Staff', desc: 'Trained, ECD-certified and loving teachers' },
+  { icon: <FaHeart />, color: '#fff', iconColor: '#D81B60', title: 'Every Child Valued', desc: 'Small classes — avg. 12 children per teacher' },
+  { icon: <FaBus />, color: '#fff', iconColor: '#9B5DE5', title: '4+ Excursions/Year', desc: 'Field trips that broaden horizons and spark curiosity' },
 ]
+
+/* Stat icon background chips */
+const STAT_BG   = ['#FFE8EA','#E8F4FB','#FEF3C7','#E0FFF7']
+const STAT_COLOR = ['#E63946','#4A9FD5','#F4A261','#06D6A0']
 
 const STATS = [
   { icon: <FaUserFriends />, end: 50, suffix: '+', label: 'Children enrolled' },
@@ -89,10 +97,14 @@ export default function Home() {
           <div className="stats-grid stagger-children">
             {STATS.map((s, i) => (
               <div key={i} className="stat-card card spring-card"
+                   style={{ borderTop: `4px solid ${STAT_COLOR[i]}` }}
                    data-aos="spring-up" data-aos-delay={i * 80}>
                 <div className="stat-icon" aria-hidden="true"
+                     style={{ background: STAT_BG[i], color: STAT_COLOR[i] }}
                      data-aos="spin-in" data-aos-delay={i * 80 + 180}>{s.icon}</div>
-                <div className="stat-number"><CountUp end={s.end} suffix={s.suffix} /></div>
+                <div className="stat-number" style={{ color: STAT_COLOR[i] }}>
+                  <CountUp end={s.end} suffix={s.suffix} />
+                </div>
                 <div className="stat-label">{s.label}</div>
               </div>
             ))}
@@ -103,19 +115,22 @@ export default function Home() {
       {/* ── WHY PARENTS TRUST US ── */}
       <section className="page-section bg-green-light" style={{ position: 'relative', overflow: 'hidden' }}>
         <MuralBackground variant="light" />
+        <BubbleField variant="light" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-label-row">
             <span className="accent-label">Why Parents Choose Us</span>
           </div>
-          <h2 className="section-heading text-center mb-1" data-aos="fade-up">A Place Where Children Thrive</h2>
-          <p className="section-subtext text-center" data-aos="fade-up" data-aos-delay="60">
+          <div className="emoji-row" aria-hidden="true" data-aos="fade-up">🛡️ 📚 🍽️ 🎓 ❤️ 🚌</div>
+          <h2 className="section-heading text-center mb-1" data-aos="fade-up" data-aos-delay="40">A Place Where Children Thrive</h2>
+          <p className="section-subtext text-center" data-aos="fade-up" data-aos-delay="80">
             Every decision we make puts your child's safety, growth, and happiness first.
           </p>
           <div className="trust-grid">
             {TRUST_ITEMS.map((item, i) => (
-              <div key={i} className="trust-card card spring-card" style={{ background: item.color }}
+              <div key={i} className="trust-card card spring-card"
+                   style={{ background: item.color, borderTop: `4px solid ${RAINBOW[i]}` }}
                    data-aos="spring-up" data-aos-delay={i * 70}>
-                <div className="trust-icon" style={{ color: item.iconColor }} aria-hidden="true"
+                <div className="trust-icon" style={{ color: item.iconColor, background: `${RAINBOW[i]}18` }} aria-hidden="true"
                      data-aos="pop-in" data-aos-delay={i * 70 + 160}>
                   {item.icon}
                 </div>
@@ -131,14 +146,16 @@ export default function Home() {
       <section className="page-section classes-preview">
         <div className="container">
           <span className="accent-label">Our Programmes</span>
-          <h2 className="section-heading mb-1" data-aos="fade-up">Learning at Every Age</h2>
-          <p className="section-subtext" data-aos="fade-up" data-aos-delay="60">
+          <div className="emoji-row" aria-hidden="true" data-aos="fade-up">👶 🎨 📚 🌈 ⭐</div>
+          <h2 className="section-heading mb-1" data-aos="fade-up" data-aos-delay="40">Learning at Every Age</h2>
+          <p className="section-subtext" data-aos="fade-up" data-aos-delay="80">
             From tiny babies to Grade R school-readiness — each class is structured around
             child development milestones, CAPS requirements, and Montessori principles.
           </p>
           <div className="classes-preview-grid">
             {PREVIEW_CLASSES.map((c, i) => (
-              <Link key={i} to={c.link} className="class-preview-card card spring-card" style={{ background: c.color }}
+              <Link key={i} to={c.link} className="class-preview-card card spring-card"
+                    style={{ background: c.color, borderTop: `4px solid ${RAINBOW[i]}` }}
                     data-aos="spring-up" data-aos-delay={i * 90}>
                 <div className="class-preview-icon" aria-hidden="true"
                      data-aos="pop-in" data-aos-delay={i * 90 + 160}>{c.icon}</div>
@@ -163,10 +180,12 @@ export default function Home() {
       {/* ── DONOR / PARTNER SECTION ── */}
       <section className="page-section donor-section" style={{ position: 'relative', overflow: 'hidden' }}>
         <MuralBackground variant="light" />
+        <BubbleField variant="dots" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="donor-inner">
             <div className="donor-text" data-aos="fade-right">
               <span className="accent-label">Support Our Mission</span>
+              <div className="emoji-row emoji-row--left" aria-hidden="true">❤️ 🌟 🤝 💛</div>
               <h2 className="section-heading mb-2">Help Us Change More Lives</h2>
               <p className="text-muted mb-3">
                 Nozuko Educare operates in Victoria Mxenge — a community facing real hardship.

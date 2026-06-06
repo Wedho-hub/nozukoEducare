@@ -1,0 +1,102 @@
+/* ═══════════════════════════════════════════════════════════════
+   BubbleField — floating translucent colour bubbles
+   Inspired by the Faithlove Rainbow Kidz Academy reference
+   ═══════════════════════════════════════════════════════════════ */
+
+.bubble-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bf-b {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+/* ── hero variant — large vivid bubbles on dark bg ── */
+.bubble-field--hero .bf-b1 {
+  width: 280px; height: 280px;
+  background: #FFD166; opacity: 0.14;
+  top: -90px; left: -100px;
+  animation: float 6.5s ease-in-out infinite;
+}
+.bubble-field--hero .bf-b2 {
+  width: 190px; height: 190px;
+  background: #E63946; opacity: 0.11;
+  bottom: 20px; right: -55px;
+  animation: float 5.2s ease-in-out infinite 1s;
+}
+.bubble-field--hero .bf-b3 {
+  width: 120px; height: 120px;
+  background: #9B5DE5; opacity: 0.13;
+  top: 42%; right: 10%;
+  animation: float 4.8s ease-in-out infinite 2.2s;
+}
+.bubble-field--hero .bf-b4 {
+  width: 68px; height: 68px;
+  background: #06D6A0; opacity: 0.18;
+  top: 18%; left: 26%;
+  animation: float 3.8s ease-in-out infinite 0.5s;
+}
+.bubble-field--hero .bf-b5 {
+  width: 50px; height: 50px;
+  background: #FF85C2; opacity: 0.22;
+  bottom: 28%; left: 9%;
+  animation: float 4.3s ease-in-out infinite 1.5s;
+}
+.bubble-field--hero .bf-b6 {
+  width: 36px; height: 36px;
+  background: #F4A261; opacity: 0.20;
+  top: 30%; right: 30%;
+  animation: float 5.5s ease-in-out infinite 0.8s;
+}
+
+/* ── light variant — subtle bubbles on white/cream bg ── */
+.bubble-field--light .bf-b1 {
+  width: 210px; height: 210px;
+  background: #FF85C2; opacity: 0.09;
+  top: -50px; right: -65px;
+  animation: float 5.8s ease-in-out infinite;
+}
+.bubble-field--light .bf-b2 {
+  width: 150px; height: 150px;
+  background: #4A9FD5; opacity: 0.08;
+  bottom: -25px; left: -45px;
+  animation: float 5s ease-in-out infinite 1.2s;
+}
+.bubble-field--light .bf-b3 {
+  width: 85px; height: 85px;
+  background: #FFD166; opacity: 0.15;
+  top: 32%; right: 7%;
+  animation: float 4.5s ease-in-out infinite 0.8s;
+}
+.bubble-field--light .bf-b4 {
+  width: 58px; height: 58px;
+  background: #9B5DE5; opacity: 0.12;
+  top: 62%; left: 4%;
+  animation: float 5.2s ease-in-out infinite 2s;
+}
+.bubble-field--light .bf-b5 {
+  width: 42px; height: 42px;
+  background: #06D6A0; opacity: 0.16;
+  bottom: 32%; right: 18%;
+  animation: float 3.8s ease-in-out infinite 0.5s;
+}
+.bubble-field--light .bf-b6 {
+  width: 30px; height: 30px;
+  background: #E63946; opacity: 0.10;
+  top: 50%; left: 20%;
+  animation: float 4s ease-in-out infinite 1.8s;
+}
+
+/* ── dots variant — tiny scattered dots for subtle sections ── */
+.bubble-field--dots .bf-b1 { width: 120px; height: 120px; background: #FFD166; opacity: 0.10; top: 10%; left: -30px; animation: float 6s ease-in-out infinite; }
+.bubble-field--dots .bf-b2 { width: 80px;  height: 80px;  background: #9B5DE5; opacity: 0.09; bottom: 15%; right: -20px; animation: float 5s ease-in-out infinite 1s; }
+.bubble-field--dots .bf-b3 { width: 50px;  height: 50px;  background: #06D6A0; opacity: 0.11; top: 55%; right: 12%; animation: float 4s ease-in-out infinite 0.5s; }
+.bubble-field--dots .bf-b4 { width: 35px;  height: 35px;  background: #E63946; opacity: 0.08; top: 25%; left: 15%; animation: float 5.5s ease-in-out infinite 1.5s; }
+.bubble-field--dots .bf-b5 { display: none; }
+.bubble-field--dots .bf-b6 { display: none; }

@@ -24,6 +24,9 @@ export default function App() {
         <meta name="description" content="Nozuko Educare - nurturing early childhood education" />
       </Helmet>
 
+      {/* Rainbow stripe — always at the very top */}
+      <div className="rainbow-stripe" aria-hidden="true" />
+
       <Navbar />
 
       <ScrollToTop />
